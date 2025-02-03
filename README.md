@@ -26,6 +26,7 @@ Collection of prompts for GitHub Copilot and other LLMs.
 
 ## 🙇 Acknowledgements
 
+- [GitHub Copilot in VS Code @ Visual Studio Code Docs](https://code.visualstudio.com/docs/copilot/overview).
 - [Master the core principles of prompt engineering with GitHub Copilot
   @ Visual Studio Code's GitHub](https://www.youtube.com/watch?v=hh1nOX14TyY)
 
