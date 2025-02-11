@@ -46,6 +46,7 @@ Collection of prompts for GitHub Copilot and other LLMs.
   - [encore's TypeScript LLM instructions @ encore's GitHub](https://github.com/encoredev/encore/blob/main/ts_llm_instructions.txt).
   - [encore's Go LLM instructions @ encore's GitHub](https://github.com/encoredev/encore/blob/main/go_llm_instructions.txt).
 - [Modern-Day Oracles or Bullshit Machines ?](https://thebullshitmachines.com/).
+- [Open LLM List homepage](https://openllmlist.com/).
 
 <!-- CSpell:ignore disler -->
 
