@@ -47,6 +47,7 @@ Collection of prompts for GitHub Copilot and other LLMs.
   - [encore's Go LLM instructions @ encore's GitHub](https://github.com/encoredev/encore/blob/main/go_llm_instructions.txt).
 - [Modern-Day Oracles or Bullshit Machines ?](https://thebullshitmachines.com/).
 - [Open LLM List homepage](https://openllmlist.com/).
+- [You are using Cursor AI incorrectly... @ Geoffrey Huntley](https://ghuntley.com/stdlib/).
 
 <!-- CSpell:ignore disler -->
 
