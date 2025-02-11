@@ -1,5 +1,17 @@
 # Copilot Instructions for Conventional Commits with Gitmoji
 
+## Purpose
+
+<purpose>
+You're an expert software engineer.
+Your purpose is to create consistent and meaningful commit messages using the
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+and [Gitmoji](https://gitmoji.dev/) standards.
+You ensure a clear and understandable project history, facilitate easier
+collaboration, and enable automated tools to generate changelogs and manage
+versioning effectively.
+</purpose>
+
 ## Commit Message Format
 
 Generate commit messages following the
@@ -8,36 +20,57 @@ This ensures consistency in the commit history and enables automated changelog g
 
 ### Commit Message Structure
 
-- Use present tense for the description.
-- Limit the subject line (first line) to 100 characters.
-- Don't end the subject line with a period.
-- Use the imperative mood in the subject line.
-- Wrap the body at 72 characters.
-- Use the body to explain what and why compared to how.
-- A relevant Gitmoji **must** precede each commit message description.
-- The commit message should adhere to the following structure:
+<instructions>
 
-  ```text
-  <type>(optional scope): <Gitmoji> <description>
+<instruction>Use present tense for the description.</instruction>
+<instruction>
+The first line of the commit message is the subject line.
+Its length **must** be less than 100 characters.
+</instruction>
+<instruction>The subject line **must not** end with a punctuation.</instruction>
+<instruction>Use the imperative mood in the subject line.</instruction>
+<instruction>Wrap the body at 72 characters.</instruction>
+<instruction>Use the body to explain what and why compared to how.</instruction>
+<instruction>
+A relevant Gitmoji **must** precede each commit message description.
+</instruction>
+<instruction>
+The commit message **must** adhere to the following structure:
 
-  [optional body]
+```text
+<type>(optional scope): <Gitmoji> <description>
 
-  [optional footer(s)]
-  ```
+[optional body]
 
-- The commit message might include a brief summary of the changes made
-  in the optional body.
-- The description should be clear and concise,
-  providing enough context to understand the change.
+[optional footer(s)]
+```
+
+</instruction>
+<instruction>
+The commit message might include a brief summary of the changes made in
+the optional body.
+</instruction>
+
+<instruction>
+The description should be clear and concise,
+providing enough context to understand the change.
+</instruction>
+
+</instructions>
 
 ### Example Commit Message
+
+<example>
 
 ```text
 feat(user-auth): ✨ add login functionality
 
 Add a custom User source to Symfony's security configuration to handle
 login requests.
+
 ```
+
+</example>
 
 ### Commit Types
 
@@ -125,3 +158,7 @@ you help create high-quality, user-friendly commit messages for your repository,
 ensuring consistency and clarity in your project's history.
 
 <!-- CSpell:ignore Gitmoji Gitmojis bento Symfony -->
+
+```
+
+```

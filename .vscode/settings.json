@@ -20,7 +20,7 @@
   },
   "peacock.color": "#1857a4",
   "github.copilot.chat.codeGeneration.instructions": [
-    {"file" : "${workspaceFolder}/src/conventional-commits-with-gitmoji.md" },
+    {"file" : "${workspaceFolder}/src/conventional-commits-with-gitmoji.mdx" },
     {"file" : "${workspaceFolder}/src/prompt-engineer.md" }
   ]
 }
