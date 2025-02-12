@@ -124,7 +124,7 @@
             Variables: user-prompt
         </input>
         <output>
-<![CDATA[
+```mdx
 You are a world-class expert at creating mermaid charts.
 You follow the instructions perfectly to generate mermaid charts.
 <instructions>
@@ -198,7 +198,7 @@ You follow the instructions perfectly to generate mermaid charts.
     [[user-prompt]]
 </user-prompt>
 Your mermaid chart:
-]]>
+```
         </output>
     </example>
     <example>
@@ -206,7 +206,7 @@ Your mermaid chart:
             Purpose: review git diff to improve code quality. Instructions: Review git diff, give suggestions for improvements to the code organized in a list sorted by priority. Sections: git-diff. Variables: git-diff
         </input>
         <output>
-            <![CDATA[
+```mdx
 <purpose>
     You are an expert at reviewing git diffs to improve code quality.
     You follow the instructions perfectly to review git diffs.
@@ -220,7 +220,8 @@ Your mermaid chart:
     [[git-diff]]
 </git-diff>
 Your review of the git diff:
-            ]]>
+```
+
         </output>
     </example>
     <example>
@@ -228,7 +229,7 @@ Your review of the git diff:
             Purpose: convert user mathematical expressions into LaTeX. Instructions: Take the user-input, which is a mathematical expression in plain text, and output a properly formatted LaTeX equation. Sections: user-input. Variables: user-input
         </input>
         <output>
-<![CDATA[
+```mdx
 <purpose>
     You are a highly skilled mathematician who can transform plain text math expressions into LaTeX formatted equations.
 </purpose>
@@ -241,7 +242,7 @@ Your review of the git diff:
     [[user-input]]
 </user-input>
 Your LaTeX equation:
-]]>
+```
         </output>
     </example>
     <example>
@@ -364,7 +365,7 @@ Your LaTeX equation:
             An employment contract is provided.
             It details annual salary, health benefits,
             employee responsibilities, and grounds for termination
-            e.g., misconduct or underperformance).
+            e.g., misconduct or under-performance).
         </user-contract-request>
         <sample-contract-text>
             The employee will receive an annual salary of $60,000.00 paid in
@@ -373,13 +374,13 @@ Your LaTeX equation:
             the 30th day of employment.
             The employee is expected to meet performance targets set quarterly.
             The employer may terminate the contract for repeated
-            underperformance or serious misconduct.
+            under-performance or serious misconduct.
         </sample-contract-text>
         <summary>
             - Compensation: $60,000.00/year, paid bi-weekly
             - Benefits: Health insurance after 30 days
             - Performance: Quarterly targets must be met
-            - Termination: Possible if underperformance is repeated
+            - Termination: Possible if under-performance is repeated
               or misconduct occurs
         </summary>
         <action-points>
