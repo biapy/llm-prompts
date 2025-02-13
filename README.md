@@ -15,7 +15,7 @@ Collection of prompts for GitHub Copilot and other LLMs.
 
    ```json
      "github.copilot.chat.codeGeneration.instructions": [
-       {"file" : "${workspaceFolder}/.github/conventional-commits-with-gitmoji.md" }
+       {"file" : "${workspaceFolder}/.github/conventional-commits-with-gitmoji.mdx" }
      ],
    ```
 
