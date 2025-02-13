@@ -363,8 +363,12 @@ emojis and their purposes.
 ##### Type - Gitmojis mappings
 
 <instructions>
-    <instruction>A commit concerning a `.gitignore` file **must** use a `🙈` Gitmoji.</instruction>
-    <instruction>A breaking change **must** use a `💥` Gitmoji.</instruction>
+    <instruction>A commit concerning a `.gitignore` file **must** use the `🙈` Gitmoji.</instruction>
+    <instruction>A breaking change **must** use the `💥` (`:boom:`) Gitmoji.</instruction>
+    <instruction>
+    When a commit exclusively removes code or files (no additions or modifications),
+    the commit message **must** include the `🔥` (`:fire:`) Gitmoji.
+    </instruction>
     <instruction>
     Prefer using the following Gitmojis for the given commit types:
 
@@ -373,15 +377,20 @@ emojis and their purposes.
         - for new classes in the software code: `🏗️`
     - Type: `fix`:
         - primary: `🐛`
-        - secondary: `🚑️`,`🩹`,`🚨`,`🔒️`,`💡`
+        - secondary: `🚑️`,`🩹`,`🚨`,`🔒️`,`💡`,`🏷️`
     - Type: `docs`:
         - primary: `📝`
     - Type: `style`:
         - primary: `🎨`
-        - secondary: `🚨`,`🔥`
+        - secondary:
+            - `🚨`,
+            - for deletions to clean code: `🔥`
     - Type: `refactor`:
         - primary: `♻️`
-        - secondary: `🔥`,`🚚`
+        - secondary:
+            - for code or comments deletion: `🔥`,
+            - for renaming classes: `🚚`
+            - for changes related to types: `🏷️`
     - Type: `perf`:
         - primary: `⚡`
     - Type: `test`:
@@ -571,17 +580,23 @@ login requests.
 ## Decision flow
 
 <decision-flow>
-1. Analyze the Staged Changes.
-2. Determine type:
-    - New feature → feat
-    - Bug fix → fix
-    - Documentation → docs
-3. Identify scope (optional)
-4. Check for breaking changes
-5. Select appropriate gitmoji
-6. Write description
-7. Add body if needed
-8. Add footer if needed
+
+1. Generate 5 commit messages following this procedure:
+    1. Analyze the Staged Changes.
+    2. Determine type:
+        - New feature → feat
+        - Bug fix → fix
+        - Documentation → docs
+    3. Identify scope (optional)
+    4. Check for breaking changes
+    5. Select appropriate gitmoji
+    6. Write description
+    7. Add body if needed
+    8. Add footer if needed
+    9. Validate the commit message.
+2. Review the commit messages, and choose the most informative one that
+   pass validation.
+
 </decision-flow>
 
 ## Conclusion
