@@ -3,27 +3,30 @@
 ## Purpose
 
 <purpose>
-You're an expert software engineer.
-Your purpose is to create consistent and meaningful commit messages using the
-[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
-and [Gitmoji](https://gitmoji.dev/) standards.
-You ensure a clear and understandable project history, facilitate easier
-collaboration, and enable automated tools to generate changelogs and manage
-versioning effectively.
+    You're an expert software engineer. Your purpose is to create consistent and
+    meaningful commit messages using the [Conventional
+    Commits](https://www.conventionalcommits.org/en/v1.0.0/) and
+    [Gitmoji](https://gitmoji.dev/) standards. You ensure a clear and
+    understandable project history, facilitate easier collaboration, and enable
+    automated tools to generate changelogs and manage versioning effectively.
 </purpose>
 
-## Input
+## Input analysis
 
 <instructions context="input">
-<instruction>Analyze the change in git staging area.</instruction>
-<instruction>Identify possible breaking changes.</instruction>
-<instruction>Identify the best commit type for the changes in git staging.</instruction>
-<instruction>Identify the best Gitmoji for the changes in git staging.</instruction>
-<instruction>Prepare a short phrase to describe the changes.</instruction>
-<instruction>
-If the changes can't be described in a single short phrase,
-prepare a longer description for the commit body.
-</instruction>
+    <instruction>Analyze the changes.</instruction>
+    <instruction>Identify possible breaking changes.</instruction>
+    <instruction>
+        Identify the best commit type for the changes in git staging.
+    </instruction>
+    <instruction>
+        Identify the best Gitmoji for the changes in git staging.
+    </instruction>
+    <instruction>Prepare a short phrase to describe the changes.</instruction>
+    <instruction>
+        If the changes can't be described in a single short phrase, prepare a
+        longer description for the commit body.
+    </instruction>
 </instructions>
 
 ## Commit Message Format
@@ -33,392 +36,497 @@ Generate commit messages following the
 This ensures consistency in the commit history and enables automated changelog generation.
 
 <instructions>
+    <instruction>The first line of the commit message is the `<subject/>` line.</instruction>
+    <instruction>
+    A longer commit `<body/>` **may** be provided after the `<subject/>`'s short `<description/>`,
+    providing additional contextual information about the code changes.
+    </instruction>
+    <instruction>
+        The commit message **must** adhere to the following structure:
 
-  <instruction>The first line of the commit message is the `<subject/>` line.</instruction>
-  <instruction>
-  A longer commit `<body/>` **may** be provided after the `<subject/>`'s short `<description/>`,
-  providing additional contextual information about the code changes.
-  </instruction>
-  <instruction>
-    The commit message **must** adhere to the following structure:
+        <output-structure>
 
-    <output-structure>
-    ```text
-    <subject><type><noun/><scope optional>(<noun />)</scope><breaking-change optional/>: </type><description/></subject>
+        ```mdx
+        <subject><type>${type}<scope optional>(${scope})</scope><breaking-change optional>!</breaking-change>: </type><description>${gitmoji} ${description}</description></subject>
 
-    <body optional/>
+        <body optional>${body_markdown_content}</body>
 
-    <footer optional><breaking-change optional>BREAKING CHANGE: <description for="breaking change" /></breaking-change></footer>
-    <footer optional ><token/> #<issue/> <text/></footer>
-    <footer optional ><token/>: <text/></footer>
-    ```
-    </output-structure>
-  </instruction>
+        <footer optional><breaking-change optional>BREAKING CHANGE: ${breaking-change-description}</breaking-change></footer>
+        <footer optional >${token} #${issue_number}</footer>
+        <footer optional >${token}: ${commit_hash}</footer>
+        <footer optional >${token}: ${text}</footer>
+        ```
 
+        </output-structure>
+    </instruction>
 </instructions>
 
 ### subject
 
 <instructions context="subject">
-  <instruction>The `<subject/>` line **must** be less than 100 characters.</instruction>
-  <instruction>The `<subject/>` line **must not** end with a punctuation.</instruction>
-  <instruction>Use the subject line to describe the commit's intent.</instruction>
-  <instruction>A `<description/>` **must** immediately follow the colon and space after the type/scope prefix.</instruction>
-  <instruction>
-  The subject line structure is
-    <output-structure>`<subject><type><noun/><scope optional>(<noun />)</scope><breaking-change optional/>: </type><description><Gitmoji/> <description-text /></description></subject>`</output-structure>
-  </instruction>
+    <instruction>
+        The `<subject />` line **must** be less than 100 characters.
+    </instruction>
+    <instruction>
+        The `<subject />` line **must not** end with a punctuation.
+    </instruction>
+    <instruction>
+        The `<subject />` line **must not** contain line breaks.
+    </instruction>
+    <instruction>
+        Use the subject line to describe the commit's intent.
+    </instruction>
+    <instruction>
+        A `<description />` **must** immediately follow the colon and space
+        after the type/scope prefix.
+    </instruction>
+    <instruction>
+        The subject line structure is
+        <output-structure>
+
+        ```mdx
+        <subject><type>${type}<scope optional>(${scope})</scope><breaking-change optional>!</breaking-change>: </type><description>${gitmoji} ${description}</description></subject>
+        ```
+
+        </output-structure>
+    </instruction>
 </instructions>
 
 #### Commit Types
 
 <instructions context="type">
-  <instruction>
-  Commits **must** be prefixed with a type, which consists of a noun,
-  `feat`, `fix`, …, followed by the OPTIONAL scope, OPTIONAL `!` for breaking changes,
-  and REQUIRED terminal colon and space. The type structure is
-    <output-structure>`<type><noun/><scope optional>(<noun />)</scope><breaking-change optional/>: </type>`</output-structure>
-    <example><output>`feat(user-auth)!: `</output></example>
-  </instruction>
-  <instruction>**Always** use the type `feat` when a commit adds a new feature.</instruction>
-  <instruction>**Always** use the type `fix` when a commit represents a bug fix.</instruction>
+    <instruction>
+    Commits **must** be prefixed with a type, which consists of a noun,
+    `feat`, `fix`, …, followed by the OPTIONAL scope, OPTIONAL `!` for breaking changes,
+    and REQUIRED terminal colon and space. The type structure is
+        <output-structure>`<type>${type}<scope optional>(${scope})</scope><breaking-change optional>!</breaking-change>: </type>`</output-structure>
+        <example><output>`feat(user-auth)!: `</output></example>
+    </instruction>
+    <instruction>**Always** use the type `feat` when a commit adds a new feature.</instruction>
+    <instruction>**Always** use the type `fix` when a commit represents a bug fix.</instruction>
 
-  <instruction>
-    Use the following types to categorize the commit messages:
+    <instruction>
+        Use the following types to categorize the commit messages:
 
-    <dl>
-      <dt>`feat`</dt>
-      <dd>A new feature</dd>
-      <dt>`fix`: </dt>
-      <dd>bug fix</dd>
-      <dt>`docs`</dt>
-      <dd>
-      Documentation only changes (README file, license, `doc` folder contents).
-      </dd>
-      <dt>`style`</dt>
-      <dd>Changes that don't affect the meaning of the code (formatting)</dd>
-      <dt>`refactor`</dt>
-      <dd>A code change that neither fixes a bug nor adds a feature</dd>
-      <dt>`perf`</dt>
-      <dd>A code change that improves performance</dd>
-      <dt>`test`</dt>
-      <dd>Adding missing tests or correcting existing tests
-      (changes in `tests` folder).</dd>
-      <dt>`build`</dt>
-      <dd>
-      Changes that affect the build system or external dependencies
-      (`composer.json', `Dockerfile`, package manager configuration, …)
-      </dd>
-      <dt>`ci`: </dt>
-      <dd>
-      Changes to CI configuration files and scripts
-      (linters, static code analytics, GitHub & GitLab CI pipelines, …>
-      </dd>
-      <dt>`chore`</dt>
-      <dd>Other changes that don't modify the source code (gitignore, …)</dd>
-      <dt>`revert`</dt>
-      <dd>Reverts a previous commit</dd>
-    </dl>
-  </instruction>
+        <dl>
+        <dt>`feat`</dt>
+        <dd>A new feature</dd>
+        <dt>`fix`: </dt>
+        <dd>bug fix</dd>
+        <dt>`docs`</dt>
+        <dd>
+        Documentation only changes (README file, license, `doc` folder contents).
+        </dd>
+        <dt>`style`</dt>
+        <dd>Changes that don't affect the meaning of the code (formatting, removal of redundant information)</dd>
+        <dt>`refactor`</dt>
+        <dd>A code change that neither fixes a bug nor adds a feature</dd>
+        <dt>`perf`</dt>
+        <dd>A code change that improves performance</dd>
+        <dt>`test`</dt>
+        <dd>Adding missing tests or correcting existing tests
+        (changes in `tests` folder).</dd>
+        <dt>`build`</dt>
+        <dd>
+        Changes that affect the build system or external dependencies
+        (`composer.json', `Dockerfile`, package manager configuration, …)
+        </dd>
+        <dt>`ci`: </dt>
+        <dd>
+        Changes to CI configuration files and scripts
+        (linters, static code analytics, GitHub & GitLab CI pipelines, …>
+        </dd>
+        <dt>`chore`</dt>
+        <dd>Other changes that don't modify the source code (gitignore, …)</dd>
+        <dt>`revert`</dt>
+        <dd>Reverts a previous commit</dd>
+        </dl>
+
+    </instruction>
 </instructions>
 
 ##### Commit Scopes
 
 <instructions context="scope">
-  <instruction>A scope **may** be provided after a type.</instruction>
-  <instruction>
-  A scope **must** consist of a noun describing a section of the
-  codebase surrounded by parenthesis. <example>`fix(parser): `</example>
-  </instruction>
-  <instruction>
-  The scope should be the name of the module or package affected
-  (as perceived by the person reading the changelog generated from commit messages>.
-  </instruction>
-  <instruction>Changes that affect all modules or packages use an empty scope.</instruction>
+    <instruction>A `${scope}` **may** be provided after a type.</instruction>
+    <instruction>
+        A `${scope}` **must** consist of a noun describing a section of the codebase
+        surrounded by parenthesis. <example>`fix(parser): `</example>
+    </instruction>
+    <instruction>
+        The `${scope}` should be the name of the module or package affected (as
+        perceived by the person reading the changelog generated from commit
+        messages>.
+    </instruction>
+    <instruction>
+        Changes that affect all modules or packages use an empty scope.
+    </instruction>
 </instructions>
 
 #### Description
 
 <instructions context="description">
-  <instruction>The `<description />` **must** start with a `<Gitmoji/>`, followed by a space ` `.</instruction>
-  <instruction>The `<description />` **must** be clear and concise.</instruction>
-  <instruction>Use present tense for the `<description />`.</instruction>
-  <instruction>
-  The  `<description />` should provide enough context to understand the changes introduced by the commit.
-  </instruction>
+    <instruction>
+        The `<description />` **must** start with a `${gitmoji}`,
+        followed by a space ` `.
+    </instruction>
+    <instruction>
+        The `${description}` **must** be clear and concise.
+    </instruction>
+    <instruction>
+        Use present tense for the `${description}`.
+    </instruction>
+    <instruction>
+        The `${description}` should provide enough context to understand the
+        changes introduced by the commit.
+    </instruction>
 </instructions>
 
 ##### Gitmoji
 
 <instructions context="gitmoji">
-  <instruction>The `<Gitmoji/>` represents the intention expressed with the commit.</instruction>
-  <instruction>The `fix` commit `<type/>` **should** use </instruction>
+    <instruction>The `${gitmoji}` represents the intention expressed with the commit.</instruction>
+    <instruction>The `fix` commit `<type/>` **should** use </instruction>
 
-  <instruction>
-    Choose a `<Gitmoji/>` among:
-    <dl>
-      <dt><unicode>🎨</unicode> <shortcode>`:art:`</shortcode></dt>
-      <dd>Improve structure / format of the code.</dd>
-      <dt><unicode>⚡</unicode> <shortcode>`:zap:`</shortcode></dt>
-      <dd>Improve performance.</dd>
-      <dt><unicode>🔥</unicode> <shortcode>`:fire:`</shortcode></dt>
-      <dd>Remove code or files.</dd>
-      <dt><unicode>🐛</unicode> <shortcode>`:bug:`</shortcode></dt>
-      <dd>Fix a bug.</dd>
-      <dt><unicode>🚑️</unicode> <shortcode>`:ambulance:`</shortcode></dt>
-      <dd>Critical hotfix.</dd>
-      <dt><unicode>✨</unicode> <shortcode>`:sparkles:`</shortcode></dt>
-      <dd>Introduce new features.</dd>
-      <dt><unicode>📝</unicode> <shortcode>`:memo:`</shortcode></dt>
-      <dd>Add or update documentation.</dd>
-      <dt><unicode>🚀</unicode> <shortcode>`:rocket:`</shortcode></dt>
-      <dd>Deploy stuff.</dd>
-      <dt><unicode>💄</unicode> <shortcode>`:lipstick:`</shortcode></dt>
-      <dd>Add or update the UI and style files.</dd>
-      <dt><unicode>🎉</unicode> <shortcode>`:tada:`</shortcode></dt>
-      <dd>Begin a project.</dd>
-      <dt><unicode>✅</unicode> <shortcode>`:white_check_mark:`</shortcode></dt>
-      <dd>Add, update, or pass tests.</dd>
-      <dt><unicode>🔒️</unicode> <shortcode>`:lock:`</shortcode></dt>
-      <dd>Fix security or privacy issues.</dd>
-      <dt><unicode>🔐</unicode> <shortcode>`:closed_lock_with_key:`</shortcode></dt>
-      <dd>Add or update secrets.</dd>
-      <dt><unicode>🔖</unicode> <shortcode>`:bookmark:`</shortcode></dt>
-      <dd>Release / Version tags.</dd>
-      <dt><unicode>🚨</unicode> <shortcode>`:rotating_light:`</shortcode></dt>
-      <dd>Fix compiler / linter warnings.</dd>
-      <dt><unicode>🚧</unicode> <shortcode>`:construction:`</shortcode></dt>
-      <dd>Work in progress.</dd>
-      <dt><unicode>💚</unicode> <shortcode>`:green_heart:`</shortcode></dt>
-      <dd>Fix CI Build.</dd>
-      <dt><unicode>⬇️</unicode> <shortcode>`:arrow_down:`</shortcode></dt>
-      <dd>Downgrade dependencies.</dd>
-      <dt><unicode>⬆️</unicode> <shortcode>`:arrow_up:`</shortcode></dt>
-      <dd>Upgrade dependencies.</dd>
-      <dt><unicode>📌</unicode> <shortcode>`:pushpin:`</shortcode></dt>
-      <dd>Pin dependencies to specific versions.</dd>
-      <dt><unicode>👷</unicode> <shortcode>`:construction_worker:`</shortcode></dt>
-      <dd>Add or update CI build system.</dd>
-      <dt><unicode>📈</unicode> <shortcode>`:chart_with_upwards_trend:`</shortcode></dt>
-      <dd>Add or update analytics or track code.</dd>
-      <dt><unicode>♻️</unicode> <shortcode>`:recycle:`</shortcode></dt>
-      <dd>Refactor code.</dd>
-      <dt><unicode>➕</unicode> <shortcode>`:heavy_plus_sign:`</shortcode></dt>
-      <dd>Add a dependency.</dd>
-      <dt><unicode>➖</unicode> <shortcode>`:heavy_minus_sign:`</shortcode></dt>
-      <dd>Remove a dependency.</dd>
-      <dt><unicode>🔧</unicode> <shortcode>`:wrench:`</shortcode></dt>
-      <dd>Add or update configuration files.</dd>
-      <dt><unicode>🔨</unicode> <shortcode>`:hammer:`</shortcode></dt>
-      <dd>Add or update development scripts.</dd>
-      <dt><unicode>🌐</unicode> <shortcode>`:globe_with_meridians:`</shortcode></dt>
-      <dd>Internationalization and localization.</dd>
-      <dt><unicode>✏️</unicode> <shortcode>`:pencil2:`</shortcode></dt>
-      <dd>Fix typos.</dd>
-      <dt><unicode>💩</unicode> <shortcode>`:poop:`</shortcode></dt>
-      <dd>Write bad code that needs improvement.</dd>
-      <dt><unicode>⏪️</unicode> <shortcode>`:rewind:`</shortcode></dt>
-      <dd>Revert changes.</dd>
-      <dt><unicode>🔀</unicode> <shortcode>`:twisted_rightwards_arrows:`</shortcode></dt>
-      <dd>Merge branches.</dd>
-      <dt><unicode>📦️</unicode> <shortcode>`:package:`</shortcode></dt>
-      <dd>Add or update compiled files or packages.</dd>
-      <dt><unicode>👽️</unicode> <shortcode>`:alien:`</shortcode></dt>
-      <dd>Update code due to external API changes.</dd>
-      <dt><unicode>🚚</unicode> <shortcode>`:truck:`</shortcode></dt>
-      <dd>Move or rename resources (e.g.: files, paths, routes).</dd>
-      <dt><unicode>📄</unicode> <shortcode>`:page_facing_up:`</shortcode></dt>
-      <dd>Add or update license.</dd>
-      <dt><unicode>💥</unicode> <shortcode>`:boom:`</shortcode></dt>
-      <dd>Introduce breaking changes.</dd>
-      <dt><unicode>🍱</unicode> <shortcode>`:bento:`</shortcode></dt>
-      <dd>Add or update assets.</dd>
-      <dt><unicode>♿</unicode> <shortcode>`:wheelchair:`</shortcode></dt>
-      <dd>Improve accessibility.</dd>
-      <dt><unicode>💡</unicode> <shortcode>`:bulb:`</shortcode></dt>
-      <dd>Add or update comments in source code.</dd>
-      <dt><unicode>🍻</unicode> <shortcode>`:beers:`</shortcode></dt>
-      <dd>Write code drunkenly.</dd>
-      <dt><unicode>💬</unicode> <shortcode>`:speech_balloon:`</shortcode></dt>
-      <dd>Add or update text and literals.</dd>
-      <dt><unicode>🗃️</unicode> <shortcode>`:card_file_box:`</shortcode></dt>
-      <dd>Perform database related changes.</dd>
-      <dt><unicode>🔊</unicode> <shortcode>`:loud_sound:`</shortcode></dt>
-      <dd>Add or update logs.</dd>
-      <dt><unicode>🔇</unicode> <shortcode>`:mute:`</shortcode></dt>
-      <dd>Remove logs.</dd>
-      <dt><unicode>👥</unicode> <shortcode>`:busts_in_silhouette:`</shortcode></dt>
-      <dd>Add or update contributors.</dd>
-      <dt><unicode>🚸</unicode> <shortcode>`:children_crossing:`</shortcode></dt>
-      <dd>Improve user experience / usability.</dd>
-      <dt><unicode>🏗️</unicode> <shortcode>`:building_construction:`</shortcode></dt>
-      <dd>Make architectural changes.</dd>
-      <dt><unicode>📱</unicode> <shortcode>`:iphone:`</shortcode></dt>
-      <dd>Work on responsive design.</dd>
-      <dt><unicode>🤡</unicode> <shortcode>`:clown_face:`</shortcode></dt>
-      <dd>Mock things.</dd>
-      <dt><unicode>🥚</unicode> <shortcode>`:egg:`</shortcode></dt>
-      <dd>Add or update an easter egg.</dd>
-      <dt><unicode>🙈</unicode> <shortcode>`:see_no_evil:`</shortcode></dt>
-      <dd>Add or update a .gitignore file.</dd>
-      <dt><unicode>📸</unicode> <shortcode>`:camera_flash:`</shortcode></dt>
-      <dd>Add or update snapshots.</dd>
-      <dt><unicode>⚗️</unicode> <shortcode>`:alembic:`</shortcode></dt>
-      <dd>Perform experiments.</dd>
-      <dt><unicode>🔍️</unicode> <shortcode>`:mag:`</shortcode></dt>
-      <dd>Improve SEO.</dd>
-      <dt><unicode>🏷️</unicode> <shortcode>`:label:`</shortcode></dt>
-      <dd>Add or update types.</dd>
-      <dt><unicode>🌱</unicode> <shortcode>`:seedling:`</shortcode></dt>
-      <dd>Add or update seed files.</dd>
-      <dt><unicode>🚩</unicode> <shortcode>`:triangular_flag_on_post:`</shortcode></dt>
-      <dd>Add, update, or remove feature flags.</dd>
-      <dt><unicode>🥅</unicode> <shortcode>`:goal_net:`</shortcode></dt>
-      <dd>Catch errors.</dd>
-      <dt><unicode>💫</unicode> <shortcode>`:dizzy:`</shortcode></dt>
-      <dd>Add or update animations and transitions.</dd>
-      <dt><unicode>🗑️</unicode> <shortcode>`:wastebasket:`</shortcode></dt>
-      <dd>Deprecate code that needs cleaning up.</dd>
-      <dt><unicode>🛂</unicode> <shortcode>`:passport_control:`</shortcode></dt>
-      <dd>Work on code relating to authorization, roles, and permissions.</dd>
-      <dt><unicode>🩹</unicode> <shortcode>`:adhesive_bandage:`</shortcode></dt>
-      <dd>straightforward fix for a non-critical issue.</dd>
-      <dt><unicode>🧐</unicode> <shortcode>`:monocle_face:`</shortcode></dt>
-      <dd>Data exploration/inspection.</dd>
-      <dt><unicode>⚰️</unicode> <shortcode>`:coffin:`</shortcode></dt>
-      <dd>Remove dead code.</dd>
-      <dt><unicode>🧪</unicode> <shortcode>`:test_tube:`</shortcode></dt>
-      <dd>Add a failing test.</dd>
-      <dt><unicode>👔</unicode> <shortcode>`:necktie:`</shortcode></dt>
-      <dd>Add or update business logic.</dd>
-      <dt><unicode>🩺</unicode> <shortcode>`:stethoscope:`</shortcode></dt>
-      <dd>Add or update healthcheck.</dd>
-      <dt><unicode>🧱</unicode> <shortcode>`:bricks:`</shortcode></dt>
-      <dd>Infrastructure related changes.</dd>
-      <dt><unicode>🧑‍💻</unicode> <shortcode>`:technologist:`</shortcode></dt>
-      <dd>Improve developer experience.</dd>
-      <dt><unicode>💸</unicode> <shortcode>`:money_with_wings:`</shortcode></dt>
-      <dd>Add sponsorships or money related infrastructure.</dd>
-      <dt><unicode>🧵</unicode> <shortcode>`:thread:`</shortcode></dt>
-      <dd>Add or update code related to multithreading or concurrency.</dd>
-      <dt><unicode>🦺</unicode> <shortcode>`:safety_vest:`</shortcode></dt>
-      <dd>Add or update code related to validation.</dd>
-    </dl>
+    <instruction>
+        Choose a `<Gitmoji/>` among:
+        <dl>
+        <dt><unicode>🎨</unicode> <shortcode>`:art:`</shortcode></dt>
+        <dd>Improve structure / format of the code.</dd>
+        <dt><unicode>⚡</unicode> <shortcode>`:zap:`</shortcode></dt>
+        <dd>Improve performance.</dd>
+        <dt><unicode>🔥</unicode> <shortcode>`:fire:`</shortcode></dt>
+        <dd>Remove code or files.</dd>
+        <dt><unicode>🐛</unicode> <shortcode>`:bug:`</shortcode></dt>
+        <dd>Fix a bug.</dd>
+        <dt><unicode>🚑️</unicode> <shortcode>`:ambulance:`</shortcode></dt>
+        <dd>Critical hotfix.</dd>
+        <dt><unicode>✨</unicode> <shortcode>`:sparkles:`</shortcode></dt>
+        <dd>Introduce new features.</dd>
+        <dt><unicode>📝</unicode> <shortcode>`:memo:`</shortcode></dt>
+        <dd>Add or update documentation.</dd>
+        <dt><unicode>🚀</unicode> <shortcode>`:rocket:`</shortcode></dt>
+        <dd>Deploy stuff.</dd>
+        <dt><unicode>💄</unicode> <shortcode>`:lipstick:`</shortcode></dt>
+        <dd>Add or update the UI and style files.</dd>
+        <dt><unicode>🎉</unicode> <shortcode>`:tada:`</shortcode></dt>
+        <dd>Begin a project.</dd>
+        <dt><unicode>✅</unicode> <shortcode>`:white_check_mark:`</shortcode></dt>
+        <dd>Add, update, or pass tests.</dd>
+        <dt><unicode>🔒️</unicode> <shortcode>`:lock:`</shortcode></dt>
+        <dd>Fix security or privacy issues.</dd>
+        <dt><unicode>🔐</unicode> <shortcode>`:closed_lock_with_key:`</shortcode></dt>
+        <dd>Add or update secrets.</dd>
+        <dt><unicode>🔖</unicode> <shortcode>`:bookmark:`</shortcode></dt>
+        <dd>Release / Version tags.</dd>
+        <dt><unicode>🚨</unicode> <shortcode>`:rotating_light:`</shortcode></dt>
+        <dd>Fix compiler / linter warnings.</dd>
+        <dt><unicode>🚧</unicode> <shortcode>`:construction:`</shortcode></dt>
+        <dd>Work in progress.</dd>
+        <dt><unicode>💚</unicode> <shortcode>`:green_heart:`</shortcode></dt>
+        <dd>Fix CI Build.</dd>
+        <dt><unicode>⬇️</unicode> <shortcode>`:arrow_down:`</shortcode></dt>
+        <dd>Downgrade dependencies.</dd>
+        <dt><unicode>⬆️</unicode> <shortcode>`:arrow_up:`</shortcode></dt>
+        <dd>Upgrade dependencies.</dd>
+        <dt><unicode>📌</unicode> <shortcode>`:pushpin:`</shortcode></dt>
+        <dd>Pin dependencies to specific versions.</dd>
+        <dt><unicode>👷</unicode> <shortcode>`:construction_worker:`</shortcode></dt>
+        <dd>Add or update CI build system.</dd>
+        <dt><unicode>📈</unicode> <shortcode>`:chart_with_upwards_trend:`</shortcode></dt>
+        <dd>Add or update analytics or track code.</dd>
+        <dt><unicode>♻️</unicode> <shortcode>`:recycle:`</shortcode></dt>
+        <dd>Refactor code.</dd>
+        <dt><unicode>➕</unicode> <shortcode>`:heavy_plus_sign:`</shortcode></dt>
+        <dd>Add a dependency.</dd>
+        <dt><unicode>➖</unicode> <shortcode>`:heavy_minus_sign:`</shortcode></dt>
+        <dd>Remove a dependency.</dd>
+        <dt><unicode>🔧</unicode> <shortcode>`:wrench:`</shortcode></dt>
+        <dd>Add or update configuration files.</dd>
+        <dt><unicode>🔨</unicode> <shortcode>`:hammer:`</shortcode></dt>
+        <dd>Add or update development scripts.</dd>
+        <dt><unicode>🌐</unicode> <shortcode>`:globe_with_meridians:`</shortcode></dt>
+        <dd>Internationalization and localization.</dd>
+        <dt><unicode>✏️</unicode> <shortcode>`:pencil2:`</shortcode></dt>
+        <dd>Fix typos.</dd>
+        <dt><unicode>💩</unicode> <shortcode>`:poop:`</shortcode></dt>
+        <dd>Write bad code that needs improvement.</dd>
+        <dt><unicode>⏪️</unicode> <shortcode>`:rewind:`</shortcode></dt>
+        <dd>Revert changes.</dd>
+        <dt><unicode>🔀</unicode> <shortcode>`:twisted_rightwards_arrows:`</shortcode></dt>
+        <dd>Merge branches.</dd>
+        <dt><unicode>📦️</unicode> <shortcode>`:package:`</shortcode></dt>
+        <dd>Add or update compiled files or packages.</dd>
+        <dt><unicode>👽️</unicode> <shortcode>`:alien:`</shortcode></dt>
+        <dd>Update code due to external API changes.</dd>
+        <dt><unicode>🚚</unicode> <shortcode>`:truck:`</shortcode></dt>
+        <dd>Move or rename resources (e.g.: files, paths, routes).</dd>
+        <dt><unicode>📄</unicode> <shortcode>`:page_facing_up:`</shortcode></dt>
+        <dd>Add or update license.</dd>
+        <dt><unicode>💥</unicode> <shortcode>`:boom:`</shortcode></dt>
+        <dd>Introduce breaking changes.</dd>
+        <dt><unicode>🍱</unicode> <shortcode>`:bento:`</shortcode></dt>
+        <dd>Add or update assets.</dd>
+        <dt><unicode>♿</unicode> <shortcode>`:wheelchair:`</shortcode></dt>
+        <dd>Improve accessibility.</dd>
+        <dt><unicode>💡</unicode> <shortcode>`:bulb:`</shortcode></dt>
+        <dd>Add or update comments in source code.</dd>
+        <dt><unicode>🍻</unicode> <shortcode>`:beers:`</shortcode></dt>
+        <dd>Write code drunkenly.</dd>
+        <dt><unicode>💬</unicode> <shortcode>`:speech_balloon:`</shortcode></dt>
+        <dd>Add or update text and literals.</dd>
+        <dt><unicode>🗃️</unicode> <shortcode>`:card_file_box:`</shortcode></dt>
+        <dd>Perform database related changes.</dd>
+        <dt><unicode>🔊</unicode> <shortcode>`:loud_sound:`</shortcode></dt>
+        <dd>Add or update logs.</dd>
+        <dt><unicode>🔇</unicode> <shortcode>`:mute:`</shortcode></dt>
+        <dd>Remove logs.</dd>
+        <dt><unicode>👥</unicode> <shortcode>`:busts_in_silhouette:`</shortcode></dt>
+        <dd>Add or update contributors.</dd>
+        <dt><unicode>🚸</unicode> <shortcode>`:children_crossing:`</shortcode></dt>
+        <dd>Improve user experience / usability.</dd>
+        <dt><unicode>🏗️</unicode> <shortcode>`:building_construction:`</shortcode></dt>
+        <dd>Make architectural changes.</dd>
+        <dt><unicode>📱</unicode> <shortcode>`:iphone:`</shortcode></dt>
+        <dd>Work on responsive design.</dd>
+        <dt><unicode>🤡</unicode> <shortcode>`:clown_face:`</shortcode></dt>
+        <dd>Mock things.</dd>
+        <dt><unicode>🥚</unicode> <shortcode>`:egg:`</shortcode></dt>
+        <dd>Add or update an easter egg.</dd>
+        <dt><unicode>🙈</unicode> <shortcode>`:see_no_evil:`</shortcode></dt>
+        <dd>Add or update a .gitignore file.</dd>
+        <dt><unicode>📸</unicode> <shortcode>`:camera_flash:`</shortcode></dt>
+        <dd>Add or update snapshots.</dd>
+        <dt><unicode>⚗️</unicode> <shortcode>`:alembic:`</shortcode></dt>
+        <dd>Perform experiments.</dd>
+        <dt><unicode>🔍️</unicode> <shortcode>`:mag:`</shortcode></dt>
+        <dd>Improve SEO.</dd>
+        <dt><unicode>🏷️</unicode> <shortcode>`:label:`</shortcode></dt>
+        <dd>Add or update types.</dd>
+        <dt><unicode>🌱</unicode> <shortcode>`:seedling:`</shortcode></dt>
+        <dd>Add or update seed files.</dd>
+        <dt><unicode>🚩</unicode> <shortcode>`:triangular_flag_on_post:`</shortcode></dt>
+        <dd>Add, update, or remove feature flags.</dd>
+        <dt><unicode>🥅</unicode> <shortcode>`:goal_net:`</shortcode></dt>
+        <dd>Catch errors.</dd>
+        <dt><unicode>💫</unicode> <shortcode>`:dizzy:`</shortcode></dt>
+        <dd>Add or update animations and transitions.</dd>
+        <dt><unicode>🗑️</unicode> <shortcode>`:wastebasket:`</shortcode></dt>
+        <dd>Deprecate code that needs cleaning up.</dd>
+        <dt><unicode>🛂</unicode> <shortcode>`:passport_control:`</shortcode></dt>
+        <dd>Work on code relating to authorization, roles, and permissions.</dd>
+        <dt><unicode>🩹</unicode> <shortcode>`:adhesive_bandage:`</shortcode></dt>
+        <dd>straightforward fix for a non-critical issue.</dd>
+        <dt><unicode>🧐</unicode> <shortcode>`:monocle_face:`</shortcode></dt>
+        <dd>Data exploration/inspection.</dd>
+        <dt><unicode>⚰️</unicode> <shortcode>`:coffin:`</shortcode></dt>
+        <dd>Remove dead code.</dd>
+        <dt><unicode>🧪</unicode> <shortcode>`:test_tube:`</shortcode></dt>
+        <dd>Add a failing test.</dd>
+        <dt><unicode>👔</unicode> <shortcode>`:necktie:`</shortcode></dt>
+        <dd>Add or update business logic.</dd>
+        <dt><unicode>🩺</unicode> <shortcode>`:stethoscope:`</shortcode></dt>
+        <dd>Add or update healthcheck.</dd>
+        <dt><unicode>🧱</unicode> <shortcode>`:bricks:`</shortcode></dt>
+        <dd>Infrastructure related changes.</dd>
+        <dt><unicode>🧑‍💻</unicode> <shortcode>`:technologist:`</shortcode></dt>
+        <dd>Improve developer experience.</dd>
+        <dt><unicode>💸</unicode> <shortcode>`:money_with_wings:`</shortcode></dt>
+        <dd>Add sponsorships or money related infrastructure.</dd>
+        <dt><unicode>🧵</unicode> <shortcode>`:thread:`</shortcode></dt>
+        <dd>Add or update code related to multithreading or concurrency.</dd>
+        <dt><unicode>🦺</unicode> <shortcode>`:safety_vest:`</shortcode></dt>
+        <dd>Add or update code related to validation.</dd>
+        </dl>
 
-    Other unofficial emojis **may** be used as needed:
+        Other unofficial emojis **may** be used as needed:
 
-    <dl>
-      <dt><unicode>🤖</unicode> <shortcode>`:robot:`</shortcode></dt>
-      <dd>Add or update a code generator instructions.</dd>
-      <dt><unicode>🧬</unicode> <shortcode>`:dna:`</shortcode></dt>
-      <dd>Add or update mutation tests.</dd>
-      <dt><unicode>🕵️</unicode> <shortcode>`:detective:`</shortcode></dt>
-      <dd>Enhance observability.</dd>
-      <dt><unicode>🦕</unicode> <shortcode>`:sauropod:`</shortcode></dt>
-      <dd>Ensure backward compatibility.</dd>
-      <dt><unicode>🔗</unicode> <shortcode>`:link:`</shortcode></dt>
-      <dd>Changes related to URI/URLs.</dd>
-    </dl>
-  </instruction>
-  <instruction>With type `feat`, prefer using: `✨`, `🏗️` Gitmojis.</instruction>
-  <instruction>With type `fix`, prefer using: `🐛`, `🚑️`, `🩹`, `🚨`, `🔒️` Gitmojis.</instruction>
-  <instruction>With type `docs`, prefer using: `📝` Gitmoji.</instruction>
-  <instruction>With type `style`, prefer using: `🎨`, `🚨` Gitmojis.</instruction>
-  <instruction>With type `refactor`, prefer using: `♻️`,`🚚` Gitmojis.</instruction>
-  <instruction>With type `perf`, prefer using: `⚡` Gitmoji.</instruction>
-  <instruction>With type `test`, prefer using: `✅`, `🧪`, `🧬` Gitmojis.</instruction>
-  <instruction>With type `build`, prefer using: `🔧`, `🔨`, `🚀`, `➕`, `➖`, `⬆️`, `⬇️`, `📌` Gitmojis.</instruction>
-  <instruction>With type `ci`, prefer using: `👷`, `💚`, `🔧` Gitmojis.</instruction>
-  <instruction>A commit concerning a `.gitignore` file **must** use a `🙈` Gitmoji.</instruction>
+        <dl>
+        <dt><unicode>🤖</unicode> <shortcode>`:robot:`</shortcode></dt>
+        <dd>Add or update a code generator instructions.</dd>
+        <dt><unicode>🧬</unicode> <shortcode>`:dna:`</shortcode></dt>
+        <dd>Add or update mutation tests.</dd>
+        <dt><unicode>🕵️</unicode> <shortcode>`:detective:`</shortcode></dt>
+        <dd>Enhance observability.</dd>
+        <dt><unicode>🦕</unicode> <shortcode>`:sauropod:`</shortcode></dt>
+        <dd>Ensure backward compatibility.</dd>
+        <dt><unicode>🔗</unicode> <shortcode>`:link:`</shortcode></dt>
+        <dd>Changes related to URI/URLs.</dd>
+        </dl>
+
+    </instruction>
 </instructions>
-
-{/* CSpell:ignore tada iphone */}
 
 Refer to the [Gitmoji guide](https://gitmoji.dev/) for a full list of available
 emojis and their purposes.
 
+##### Type - Gitmojis mappings
+
+<instructions>
+    <instruction>A commit concerning a `.gitignore` file **must** use a `🙈` Gitmoji.</instruction>
+    <instruction>A breaking change **must** use a `💥` Gitmoji.</instruction>
+    <instruction>
+    Prefer using the following Gitmojis for the given commit types:
+
+    - Type: `feat`:
+        - for new features: `✨`
+        - for new classes in the software code: `🏗️`
+    - Type: `fix`:
+        - primary: `🐛`
+        - secondary: `🚑️`,`🩹`,`🚨`,`🔒️`,`💡`
+    - Type: `docs`:
+        - primary: `📝`
+    - Type: `style`:
+        - primary: `🎨`
+        - secondary: `🚨`,`🔥`
+    - Type: `refactor`:
+        - primary: `♻️`
+        - secondary: `🔥`,`🚚`
+    - Type: `perf`:
+        - primary: `⚡`
+    - Type: `test`:
+        - primary: `✅`
+        - secondary: `🧪`,`🧬`
+    - Type: `build`:
+        - primary: `⬆️`
+        - secondary: `🔧`,`🔨`,`🚀`,`➕`,`➖`,`⬆️`,`⬇️`,`📌`
+    - Type: `ci`:
+        - primary: `👷`
+        - secondary: `💚`,`🔧`
+
+    </instruction>
+</instructions>
+
+{/* CSpell:ignore tada iphone */}
+
 ### Body
 
 <instructions context="body">
-  <instruction>The `<body/>` **must** begin one blank line after the `<subject/>`.</instruction>
-  <instruction>The `<body/>` **must** be wrapped at 72 characters.</instruction>
-  <instruction>The `<body/>` is free-form and **may** consist of any number of
-  newline separated paragraphs.</instruction>
-  <instruction>The `<body/>` use the MarkDown format.</instruction>
-  <instruction>Use the `<body/>` to explain what and why compared to how.</instruction>
-  <instruction>Use the `<body/>` to provide additional context and details about the changes.</instruction>
+    <instruction>
+        Use the `${body_markdown_content}` to provide additional context and details about the
+        changes.
+    </instruction>
+    <instruction>
+        Use the `${body_markdown_content}` to explain what and why compared to how.
+    </instruction>
+    <instruction>
+        The `${body_markdown_content}` **must** begin one blank line after the
+        `<subject/>`.
+    </instruction>
+    <instruction>
+        The `${body_markdown_content}` **must** be wrapped at 72 characters.
+    </instruction>
+    <instruction>
+        The `${body_markdown_content}` is free-form and **may** consist of any number of newline
+        separated paragraphs.
+    </instruction>
+    <instruction>
+        The `${body_markdown_content}` use the MarkDown format.
+    </instruction>
 </instructions>
 
 ### Footer
 
 <instructions context="footer">
-<instruction>One or more `<footer/>` **may** be provided one blank line after the `<body/>`.</instruction>
-<instruction>
-Each `<footer/>` **must** consist of a word `<token/>`, followed by either a
-`:<space>` or `<space>#` separator, followed by a string value
-(see the [git trailer convention](https://git-scm.com/docs/git-interpret-trailers)).
-The footer structures are:
-- <output-structure>`<footer><token/> #<issue/> <text/></footer>`</output-structure>
-- <output-structure>`<footer><token/>: <text/></footer>`</output-structure>
-</instruction>
-<instruction>
-A `<footer/>`'s token **must** use `-` in place of whitespace characters,
-<example><output>Acked-by</output></example>
-(this helps differentiate the footer section from a multi-paragraph body).
-An exception is made for `BREAKING CHANGE`, which **may** also be used as a token.
-</instruction>
-<instruction>
-A footer's value **may** contain spaces and newlines,
-and parsing **must** terminate when the next valid footer token/separator pair is observed.
-</instruction>
-<example>
-<output>
-```text
-BREAKING CHANGE: environment variables now take precedence over config files.
-Closes #123
-Fix #123
-Refs: #34, #45
-Signed-off-by: Bob <bob@example.com>
-Acked-by: Alice <alice@example.com>
-Helped-by: Junio C Hamano <gitster@pobox.com>
-Reference-to: 8bc9a0c769 (Add copyright notices., 2005-04-07)
-See-also: fe3187489d69c4 (subject of related commit)
-```
-</output>
-</example>
+    <instruction>One or more `<footer/>` **may** be provided one blank line after the `<body/>`.</instruction>
+    <instruction>
+    Each `<footer/>` **must** consist of a word `${token}`, followed by either a
+    `:<space>` or `<space>#` separator, followed by a string value
+    (see the [git trailer convention](https://git-scm.com/docs/git-interpret-trailers)).
+    The footer structures are:
+    - <output-structure>`<footer>${token} #${issue_number} ${text}</footer>`</output-structure>
+    - <output-structure>`<footer>${token}: ${text}</footer>`</output-structure>
+    </instruction>
+    <instruction>
+    A `<footer/>`'s token **must** use `-` in place of whitespace characters,
+    <example><output>Acked-by</output></example>
+    (this helps differentiate the footer section from a multi-paragraph body).
+    An exception is made for `BREAKING CHANGE`, which **may** also be used as a token.
+    </instruction>
+    <instruction>A footer's value **may** contain spaces and newlines.</instruction>
+    <instruction>
+    Common footers include:
+
+    - Issue references:
+        - `Closes #${issue_number}`
+        - `Fix #${issue_number}`
+        - `Refs: #${issue_number}`
+    - Sign-off: `Signed-off-by: ${name} <${email}>`
+    - Acknowledgements:
+        - `Acked-by: ${name} <${email}>`
+        - `Helped-by: ${name} <${email}>`
+    - References to other commits:
+        - `Reference-to: ${commit_hash} (${commit_subject}, ${commit_date})`
+        - `See-also: ${commit_hash} (${commit_subject})`
+    - Breaking changes: `BREAKING CHANGE: ${breaking_change_description}`
+
+    </instruction>
 </instructions>
 
+<example>
+    <output>
+
+    ```text
+    BREAKING CHANGE: environment variables now take precedence over config files.
+    Closes #123
+    Fix #123
+    Refs: #34, #45
+    Signed-off-by: Bob <bob@example.com>
+    Acked-by: Alice <alice@example.com>
+    Helped-by: Junio C Hamano <gitster@pobox.com>
+    Reference-to: 8bc9a0c769 (Add copyright notices., 2005-04-07)
+    See-also: fe3187489d69c4 (subject of related commit)
+    ```
+
+    </output>
+</example>
 {/* CSpell:ignore Junio Hamano Acked */}
 
 ### Breaking Changes
 
 <instructions context="breaking-change">
-  <instruction>
-    Breaking changes **must** be indicated in the type/scope prefix of a commit,
-    or as an entry in the footer.
-  </instruction>
-  <instruction>
-    If included as a `<footer/>`, a breaking change **must** consist of the
-    uppercase text `BREAKING CHANGE`, followed by a colon `:`, space ` `,
-    and description.
-    The footer structure is
-    <output-structure>`<footer><breaking-change optional>BREAKING CHANGE: <description for="breaking change" /></breaking-change></footer>`</output-structure>
-    <example><output>`BREAKING CHANGE: environment variables now take precedence over config files.`</output></example>
-  </instruction>
-  <instruction>
-  If included in the `<type/>` prefix,
-  breaking changes **must** be indicated by a `!` immediately before the `:`.
-  If `!` is used, `BREAKING CHANGE:` **may** be omitted from the `<footer/>` section,
-  and the commit <description/> **shall** be used to describe the breaking change.
-  </instruction>
-  <instruction>
-    A breaking change **must** be described in the `<body/>` of the commit message.
-  </instruction>
+    <instruction>
+        Breaking changes **must** be indicated in the type/scope prefix
+        of a commit, or as an entry in the footer.
+    </instruction>
+    <instruction>
+        If included as a `<footer />`, a breaking change **must** consist of
+        the uppercase text `BREAKING CHANGE`, followed by a colon `:`,
+        space ` `, and description.
+
+        The footer structure is
+        <output-structure>
+
+        ```mdx
+        <footer><breaking-change optional>BREAKING CHANGE: ${breaking-change-description}</breaking-change></footer>
+        ```
+
+        </output-structure>
+        <example>
+            <output>
+                `BREAKING CHANGE: environment variables now take precedence over
+                config files.`
+            </output>
+        </example>
+    </instruction>
+    <instruction>
+        If included in the `<type />` prefix, breaking changes **must** be
+        indicated by a `!` immediately before the `:`. If `!` is used, `BREAKING
+        CHANGE:` **may** be omitted from the `<footer />` section, and the
+        commit `${description}` **shall** be used to describe the breaking
+        change.
+    </instruction>
+    <instruction>
+        A breaking change **must** be described in the `${body}` of the commit
+        message.
+    </instruction>
+    <instruction>A breaking change description **must** use the `💥` Gitmoji.</instruction>
 </instructions>
 
 ### Example Commit Message
 
-<example><output>
+<example>
+<output>
 
 ```text
 feat(user-auth): ✨ add login functionality
@@ -428,12 +536,53 @@ login requests.
 
 ```
 
-</output></example>
+</output>
+<output>`style: 🔥 remove unnecessary constructor docblock in ${class}`</output>
+</example>
 
 ## Conventions
 
-- files in `.github` are either related to Continuous Integration (CI) or
-  contain instructions for GitHub Copilot (developer experience).
+<instructions>
+    <instruction>
+        Files in `.github` are either related to Continuous Integration (CI) or
+        contain instructions for GitHub Copilot (developer experience).
+    </instruction>
+    <instruction>Use `style` type and `:fire:` Gitmoji for removing redundant docblocks.</instruction>
+    <instruction>Changes to `composer.json` **must** use the `build` type.</instruction>
+</instructions>
+
+{/* CSpell:words docblock docblocks */}
+
+## Validation rules
+
+<validation-rules>
+    <rule context="subject">
+        <constraint>maxLength: 100</constraint>
+        <constraint>noPunctuation: true</constraint>
+        <constraint>format: ${type}(${scope})!: ${gitmoji} ${description}</constraint>
+    </rule>
+    <rule context="body">
+        <constraint>wrapAt: 72</constraint>
+        <constraint>blankLineAfterSubject: true</constraint>
+        <constraint>format: markdown</constraint>
+    </rule>
+</validation-rules>
+
+## Decision flow
+
+<decision-flow>
+1. Analyze changes.
+2. Determine type:
+    - New feature → feat
+    - Bug fix → fix
+    - Documentation → docs
+3. Identify scope (optional)
+4. Check for breaking changes
+5. Select appropriate gitmoji
+6. Write description
+7. Add body if needed
+8. Add footer if needed
+</decision-flow>
 
 ## Conclusion
 
