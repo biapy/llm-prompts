@@ -32,6 +32,8 @@ Collection of prompts for GitHub Copilot and other LLMs.
 
 ## 🙇 Acknowledgements
 
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
+  ([Prompt Engineering Guide @ GitHub](https://github.com/dair-ai/Prompt-Engineering-Guide)).
 - [Prompt engineering @ Anthropic](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview).
 - [GitHub Copilot in VS Code @ Visual Studio Code Docs](https://code.visualstudio.com/docs/copilot/overview).
 - [Master the core principles of prompt engineering with GitHub Copilot
