@@ -15,26 +15,6 @@
 ## Decision Flow
 
 <decision-flow>
-
-1. Generate 5 commit messages following this procedure:
-    1. Analyze the Staged Changes.
-    2. Determine type:
-        - New feature → feat
-        - Bug fix → fix
-        - Documentation → docs
-    3. Identify scope (optional)
-    4. Check for breaking changes
-    5. Select appropriate gitmoji
-    6. Write description
-    7. Add body if needed
-    8. Add footer if needed
-    9. Validate the commit message.
-2. Review the commit messages, and choose the most informative one that
-   pass validation.
-
-</decision-flow>
-
-<decision-flow>
 Think step by step to generate 10 commit messages.
 For each commit message:
 
@@ -45,9 +25,9 @@ For each commit message:
         2. Identify the scope of the commit.
         2. Choose the Gitmoji according to the the intention of the commit.
         3. Write a short description to describe the changes.
-    6. Write a longer description for the commit body if the subject doesn't
+    6. Add a body with a longer description of the changes if the subject doesn't
        describe the changes clearly.
-    7. Prepare a footer if needed.
+    7. Add a footer if needed.
     8. Validate the commit message.
 
 Choose the commit message that best describes the changes and passes validation.
@@ -173,214 +153,204 @@ This ensures consistency in the commit history and enables automated changelog g
 ##### Commit Scopes
 
 <instructions context="scope">
-    <instruction>A `{scope}` **may** be provided after a type.</instruction>
-    <instruction>
-        A `{scope}` **must** consist of a noun describing a section of the codebase
-        surrounded by parenthesis. <example>`fix(parser): `</example>
-    </instruction>
-    <instruction>
-        The `{scope}` should be the name of the module or package affected (as
-        perceived by the person reading the changelog generated from commit
-        messages>.
-    </instruction>
-    <instruction>
-        Changes that affect all modules or packages use an empty scope.
-    </instruction>
+
+- A `{scope}` **may** be provided after a type.
+- A `{scope}` **must** consist of a noun describing a section of the codebase
+  surrounded by parenthesis `()`.
+
+  <example>`fix(parser): `</example>
+
+- The `{scope}` should be the name of the module or package affected
+  (as perceived by the person reading the changelog generated from commit messages).
+- Changes that affect all modules or packages use an empty scope.
+
 </instructions>
 
 #### Description
 
 <instructions context="description">
-    <instruction>
-        The `<description />` **must** start with a `{gitmoji}`,
-        followed by a space ` `.
-    </instruction>
-    <instruction>
-        The `{description}` **must** be clear and concise.
-    </instruction>
-    <instruction>
-        Use present tense for the `{description}`.
-    </instruction>
-    <instruction>
-        The `{description}` should provide enough context to understand the
-        changes introduced by the commit.
-    </instruction>
+
+- The `<description />` **must** start with a `{gitmoji}`, followed by a space ` `.
+- The `{description}` **must** be clear and concise.
+- Use present tense for the `{description}`.
+- The `{description}` should provide enough context to understand the
+  changes introduced by the commit.
+
 </instructions>
 
 ##### Gitmoji
 
 <instructions context="gitmoji">
-    <instruction>The `{gitmoji}` represents the intention expressed with the commit.</instruction>
-    <instruction>The `fix` commit `<type/>` **should** use </instruction>
-
-    <instruction>
-        Choose a `<Gitmoji/>` among:
-        <dl>
-        <dt><unicode>🎨</unicode> <shortcode>`:art:`</shortcode></dt>
-        <dd>Improve structure / format of the code.</dd>
-        <dt><unicode>⚡</unicode> <shortcode>`:zap:`</shortcode></dt>
-        <dd>Improve performance.</dd>
-        <dt><unicode>🔥</unicode> <shortcode>`:fire:`</shortcode></dt>
-        <dd>Remove code or files.</dd>
-        <dt><unicode>🐛</unicode> <shortcode>`:bug:`</shortcode></dt>
-        <dd>Fix a bug.</dd>
-        <dt><unicode>🚑️</unicode> <shortcode>`:ambulance:`</shortcode></dt>
-        <dd>Critical hotfix.</dd>
-        <dt><unicode>✨</unicode> <shortcode>`:sparkles:`</shortcode></dt>
-        <dd>Introduce new features.</dd>
-        <dt><unicode>📝</unicode> <shortcode>`:memo:`</shortcode></dt>
-        <dd>Add or update documentation.</dd>
-        <dt><unicode>🚀</unicode> <shortcode>`:rocket:`</shortcode></dt>
-        <dd>Deploy stuff.</dd>
-        <dt><unicode>💄</unicode> <shortcode>`:lipstick:`</shortcode></dt>
-        <dd>Add or update the UI and style files.</dd>
-        <dt><unicode>🎉</unicode> <shortcode>`:tada:`</shortcode></dt>
-        <dd>Begin a project.</dd>
-        <dt><unicode>✅</unicode> <shortcode>`:white_check_mark:`</shortcode></dt>
-        <dd>Add, update, or pass tests.</dd>
-        <dt><unicode>🔒️</unicode> <shortcode>`:lock:`</shortcode></dt>
-        <dd>Fix security or privacy issues.</dd>
-        <dt><unicode>🔐</unicode> <shortcode>`:closed_lock_with_key:`</shortcode></dt>
-        <dd>Add or update secrets.</dd>
-        <dt><unicode>🔖</unicode> <shortcode>`:bookmark:`</shortcode></dt>
-        <dd>Release / Version tags.</dd>
-        <dt><unicode>🚨</unicode> <shortcode>`:rotating_light:`</shortcode></dt>
-        <dd>Fix compiler / linter warnings.</dd>
-        <dt><unicode>🚧</unicode> <shortcode>`:construction:`</shortcode></dt>
-        <dd>Work in progress.</dd>
-        <dt><unicode>💚</unicode> <shortcode>`:green_heart:`</shortcode></dt>
-        <dd>Fix CI Build.</dd>
-        <dt><unicode>⬇️</unicode> <shortcode>`:arrow_down:`</shortcode></dt>
-        <dd>Downgrade dependencies.</dd>
-        <dt><unicode>⬆️</unicode> <shortcode>`:arrow_up:`</shortcode></dt>
-        <dd>Upgrade dependencies.</dd>
-        <dt><unicode>📌</unicode> <shortcode>`:pushpin:`</shortcode></dt>
-        <dd>Pin dependencies to specific versions.</dd>
-        <dt><unicode>👷</unicode> <shortcode>`:construction_worker:`</shortcode></dt>
-        <dd>Add or update CI build system.</dd>
-        <dt><unicode>📈</unicode> <shortcode>`:chart_with_upwards_trend:`</shortcode></dt>
-        <dd>Add or update analytics or track code.</dd>
-        <dt><unicode>♻️</unicode> <shortcode>`:recycle:`</shortcode></dt>
-        <dd>Refactor code.</dd>
-        <dt><unicode>➕</unicode> <shortcode>`:heavy_plus_sign:`</shortcode></dt>
-        <dd>Add a dependency.</dd>
-        <dt><unicode>➖</unicode> <shortcode>`:heavy_minus_sign:`</shortcode></dt>
-        <dd>Remove a dependency.</dd>
-        <dt><unicode>🔧</unicode> <shortcode>`:wrench:`</shortcode></dt>
-        <dd>Add or update configuration files.</dd>
-        <dt><unicode>🔨</unicode> <shortcode>`:hammer:`</shortcode></dt>
-        <dd>Add or update development scripts.</dd>
-        <dt><unicode>🌐</unicode> <shortcode>`:globe_with_meridians:`</shortcode></dt>
-        <dd>Internationalization and localization.</dd>
-        <dt><unicode>✏️</unicode> <shortcode>`:pencil2:`</shortcode></dt>
-        <dd>Fix typos.</dd>
-        <dt><unicode>💩</unicode> <shortcode>`:poop:`</shortcode></dt>
-        <dd>Write bad code that needs improvement.</dd>
-        <dt><unicode>⏪️</unicode> <shortcode>`:rewind:`</shortcode></dt>
-        <dd>Revert changes.</dd>
-        <dt><unicode>🔀</unicode> <shortcode>`:twisted_rightwards_arrows:`</shortcode></dt>
-        <dd>Merge branches.</dd>
-        <dt><unicode>📦️</unicode> <shortcode>`:package:`</shortcode></dt>
-        <dd>Add or update compiled files or packages.</dd>
-        <dt><unicode>👽️</unicode> <shortcode>`:alien:`</shortcode></dt>
-        <dd>Update code due to external API changes.</dd>
-        <dt><unicode>🚚</unicode> <shortcode>`:truck:`</shortcode></dt>
-        <dd>Move or rename resources (e.g.: files, paths, routes).</dd>
-        <dt><unicode>📄</unicode> <shortcode>`:page_facing_up:`</shortcode></dt>
-        <dd>Add or update license.</dd>
-        <dt><unicode>💥</unicode> <shortcode>`:boom:`</shortcode></dt>
-        <dd>Introduce breaking changes.</dd>
-        <dt><unicode>🍱</unicode> <shortcode>`:bento:`</shortcode></dt>
-        <dd>Add or update assets.</dd>
-        <dt><unicode>♿</unicode> <shortcode>`:wheelchair:`</shortcode></dt>
-        <dd>Improve accessibility.</dd>
-        <dt><unicode>💡</unicode> <shortcode>`:bulb:`</shortcode></dt>
-        <dd>Add or update comments in source code.</dd>
-        <dt><unicode>🍻</unicode> <shortcode>`:beers:`</shortcode></dt>
-        <dd>Write code drunkenly.</dd>
-        <dt><unicode>💬</unicode> <shortcode>`:speech_balloon:`</shortcode></dt>
-        <dd>Add or update text and literals.</dd>
-        <dt><unicode>🗃️</unicode> <shortcode>`:card_file_box:`</shortcode></dt>
-        <dd>Perform database related changes.</dd>
-        <dt><unicode>🔊</unicode> <shortcode>`:loud_sound:`</shortcode></dt>
-        <dd>Add or update logs.</dd>
-        <dt><unicode>🔇</unicode> <shortcode>`:mute:`</shortcode></dt>
-        <dd>Remove logs.</dd>
-        <dt><unicode>👥</unicode> <shortcode>`:busts_in_silhouette:`</shortcode></dt>
-        <dd>Add or update contributors.</dd>
-        <dt><unicode>🚸</unicode> <shortcode>`:children_crossing:`</shortcode></dt>
-        <dd>Improve user experience / usability.</dd>
-        <dt><unicode>🏗️</unicode> <shortcode>`:building_construction:`</shortcode></dt>
-        <dd>Make architectural changes.</dd>
-        <dt><unicode>📱</unicode> <shortcode>`:iphone:`</shortcode></dt>
-        <dd>Work on responsive design.</dd>
-        <dt><unicode>🤡</unicode> <shortcode>`:clown_face:`</shortcode></dt>
-        <dd>Mock things.</dd>
-        <dt><unicode>🥚</unicode> <shortcode>`:egg:`</shortcode></dt>
-        <dd>Add or update an easter egg.</dd>
-        <dt><unicode>🙈</unicode> <shortcode>`:see_no_evil:`</shortcode></dt>
-        <dd>Add or update a .gitignore file.</dd>
-        <dt><unicode>📸</unicode> <shortcode>`:camera_flash:`</shortcode></dt>
-        <dd>Add or update snapshots.</dd>
-        <dt><unicode>⚗️</unicode> <shortcode>`:alembic:`</shortcode></dt>
-        <dd>Perform experiments.</dd>
-        <dt><unicode>🔍️</unicode> <shortcode>`:mag:`</shortcode></dt>
-        <dd>Improve SEO.</dd>
-        <dt><unicode>🏷️</unicode> <shortcode>`:label:`</shortcode></dt>
-        <dd>Add or update types.</dd>
-        <dt><unicode>🌱</unicode> <shortcode>`:seedling:`</shortcode></dt>
-        <dd>Add or update seed files.</dd>
-        <dt><unicode>🚩</unicode> <shortcode>`:triangular_flag_on_post:`</shortcode></dt>
-        <dd>Add, update, or remove feature flags.</dd>
-        <dt><unicode>🥅</unicode> <shortcode>`:goal_net:`</shortcode></dt>
-        <dd>Catch errors.</dd>
-        <dt><unicode>💫</unicode> <shortcode>`:dizzy:`</shortcode></dt>
-        <dd>Add or update animations and transitions.</dd>
-        <dt><unicode>🗑️</unicode> <shortcode>`:wastebasket:`</shortcode></dt>
-        <dd>Deprecate code that needs cleaning up.</dd>
-        <dt><unicode>🛂</unicode> <shortcode>`:passport_control:`</shortcode></dt>
-        <dd>Work on code relating to authorization, roles, and permissions.</dd>
-        <dt><unicode>🩹</unicode> <shortcode>`:adhesive_bandage:`</shortcode></dt>
-        <dd>straightforward fix for a non-critical issue.</dd>
-        <dt><unicode>🧐</unicode> <shortcode>`:monocle_face:`</shortcode></dt>
-        <dd>Data exploration/inspection.</dd>
-        <dt><unicode>⚰️</unicode> <shortcode>`:coffin:`</shortcode></dt>
-        <dd>Remove dead code.</dd>
-        <dt><unicode>🧪</unicode> <shortcode>`:test_tube:`</shortcode></dt>
-        <dd>Add a failing test.</dd>
-        <dt><unicode>👔</unicode> <shortcode>`:necktie:`</shortcode></dt>
-        <dd>Add or update business logic.</dd>
-        <dt><unicode>🩺</unicode> <shortcode>`:stethoscope:`</shortcode></dt>
-        <dd>Add or update healthcheck.</dd>
-        <dt><unicode>🧱</unicode> <shortcode>`:bricks:`</shortcode></dt>
-        <dd>Infrastructure related changes.</dd>
-        <dt><unicode>🧑‍💻</unicode> <shortcode>`:technologist:`</shortcode></dt>
-        <dd>Improve developer experience.</dd>
-        <dt><unicode>💸</unicode> <shortcode>`:money_with_wings:`</shortcode></dt>
-        <dd>Add sponsorships or money related infrastructure.</dd>
-        <dt><unicode>🧵</unicode> <shortcode>`:thread:`</shortcode></dt>
-        <dd>Add or update code related to multithreading or concurrency.</dd>
-        <dt><unicode>🦺</unicode> <shortcode>`:safety_vest:`</shortcode></dt>
-        <dd>Add or update code related to validation.</dd>
-        </dl>
-
-        Other unofficial emojis **may** be used as needed:
-
-        <dl>
-        <dt><unicode>🤖</unicode> <shortcode>`:robot:`</shortcode></dt>
-        <dd>Add or update a code generator instructions.</dd>
-        <dt><unicode>🧬</unicode> <shortcode>`:dna:`</shortcode></dt>
-        <dd>Add or update mutation tests.</dd>
-        <dt><unicode>🕵️</unicode> <shortcode>`:detective:`</shortcode></dt>
-        <dd>Enhance observability.</dd>
-        <dt><unicode>🦕</unicode> <shortcode>`:sauropod:`</shortcode></dt>
-        <dd>Ensure backward compatibility.</dd>
-        <dt><unicode>🔗</unicode> <shortcode>`:link:`</shortcode></dt>
-        <dd>Changes related to URI/URLs.</dd>
-        </dl>
-
-    </instruction>
+- Analyze the intention of the commit, and choose the best unicode `{gitmoji}`
+  from the `<gitmoji-list/>`.
 </instructions>
+
+<gitmoji-list>
+<dl>
+    <dt><unicode>🎨</unicode> <shortcode>`:art:`</shortcode></dt>
+    <dd>Improve structure / format of the code.</dd>
+    <dt><unicode>⚡</unicode> <shortcode>`:zap:`</shortcode></dt>
+    <dd>Improve performance.</dd>
+    <dt><unicode>🔥</unicode> <shortcode>`:fire:`</shortcode></dt>
+    <dd>Remove code or files.</dd>
+    <dt><unicode>🐛</unicode> <shortcode>`:bug:`</shortcode></dt>
+    <dd>Fix a bug.</dd>
+    <dt><unicode>🚑️</unicode> <shortcode>`:ambulance:`</shortcode></dt>
+    <dd>Critical hotfix.</dd>
+    <dt><unicode>✨</unicode> <shortcode>`:sparkles:`</shortcode></dt>
+    <dd>Introduce new features.</dd>
+    <dt><unicode>📝</unicode> <shortcode>`:memo:`</shortcode></dt>
+    <dd>Add or update documentation.</dd>
+    <dt><unicode>🚀</unicode> <shortcode>`:rocket:`</shortcode></dt>
+    <dd>Deploy stuff.</dd>
+    <dt><unicode>💄</unicode> <shortcode>`:lipstick:`</shortcode></dt>
+    <dd>Add or update the UI and style files.</dd>
+    <dt><unicode>🎉</unicode> <shortcode>`:tada:`</shortcode></dt>
+    <dd>Begin a project.</dd>
+    <dt><unicode>✅</unicode> <shortcode>`:white_check_mark:`</shortcode></dt>
+    <dd>Add, update, or pass tests.</dd>
+    <dt><unicode>🔒️</unicode> <shortcode>`:lock:`</shortcode></dt>
+    <dd>Fix security or privacy issues.</dd>
+    <dt><unicode>🔐</unicode> <shortcode>`:closed_lock_with_key:`</shortcode></dt>
+    <dd>Add or update secrets.</dd>
+    <dt><unicode>🔖</unicode> <shortcode>`:bookmark:`</shortcode></dt>
+    <dd>Release / Version tags.</dd>
+    <dt><unicode>🚨</unicode> <shortcode>`:rotating_light:`</shortcode></dt>
+    <dd>Fix compiler / linter warnings.</dd>
+    <dt><unicode>🚧</unicode> <shortcode>`:construction:`</shortcode></dt>
+    <dd>Work in progress.</dd>
+    <dt><unicode>💚</unicode> <shortcode>`:green_heart:`</shortcode></dt>
+    <dd>Fix CI Build.</dd>
+    <dt><unicode>⬇️</unicode> <shortcode>`:arrow_down:`</shortcode></dt>
+    <dd>Downgrade dependencies.</dd>
+    <dt><unicode>⬆️</unicode> <shortcode>`:arrow_up:`</shortcode></dt>
+    <dd>Upgrade dependencies.</dd>
+    <dt><unicode>📌</unicode> <shortcode>`:pushpin:`</shortcode></dt>
+    <dd>Pin dependencies to specific versions.</dd>
+    <dt><unicode>👷</unicode> <shortcode>`:construction_worker:`</shortcode></dt>
+    <dd>Add or update CI build system.</dd>
+    <dt><unicode>📈</unicode> <shortcode>`:chart_with_upwards_trend:`</shortcode></dt>
+    <dd>Add or update analytics or track code.</dd>
+    <dt><unicode>♻️</unicode> <shortcode>`:recycle:`</shortcode></dt>
+    <dd>Refactor code.</dd>
+    <dt><unicode>➕</unicode> <shortcode>`:heavy_plus_sign:`</shortcode></dt>
+    <dd>Add a dependency.</dd>
+    <dt><unicode>➖</unicode> <shortcode>`:heavy_minus_sign:`</shortcode></dt>
+    <dd>Remove a dependency.</dd>
+    <dt><unicode>🔧</unicode> <shortcode>`:wrench:`</shortcode></dt>
+    <dd>Add or update configuration files.</dd>
+    <dt><unicode>🔨</unicode> <shortcode>`:hammer:`</shortcode></dt>
+    <dd>Add or update development scripts.</dd>
+    <dt><unicode>🌐</unicode> <shortcode>`:globe_with_meridians:`</shortcode></dt>
+    <dd>Internationalization and localization.</dd>
+    <dt><unicode>✏️</unicode> <shortcode>`:pencil2:`</shortcode></dt>
+    <dd>Fix typos.</dd>
+    <dt><unicode>💩</unicode> <shortcode>`:poop:`</shortcode></dt>
+    <dd>Write bad code that needs improvement.</dd>
+    <dt><unicode>⏪️</unicode> <shortcode>`:rewind:`</shortcode></dt>
+    <dd>Revert changes.</dd>
+    <dt><unicode>🔀</unicode> <shortcode>`:twisted_rightwards_arrows:`</shortcode></dt>
+    <dd>Merge branches.</dd>
+    <dt><unicode>📦️</unicode> <shortcode>`:package:`</shortcode></dt>
+    <dd>Add or update compiled files or packages.</dd>
+    <dt><unicode>👽️</unicode> <shortcode>`:alien:`</shortcode></dt>
+    <dd>Update code due to external API changes.</dd>
+    <dt><unicode>🚚</unicode> <shortcode>`:truck:`</shortcode></dt>
+    <dd>Move or rename resources (e.g.: files, paths, routes).</dd>
+    <dt><unicode>📄</unicode> <shortcode>`:page_facing_up:`</shortcode></dt>
+    <dd>Add or update license.</dd>
+    <dt><unicode>💥</unicode> <shortcode>`:boom:`</shortcode></dt>
+    <dd>Introduce breaking changes.</dd>
+    <dt><unicode>🍱</unicode> <shortcode>`:bento:`</shortcode></dt>
+    <dd>Add or update assets.</dd>
+    <dt><unicode>♿</unicode> <shortcode>`:wheelchair:`</shortcode></dt>
+    <dd>Improve accessibility.</dd>
+    <dt><unicode>💡</unicode> <shortcode>`:bulb:`</shortcode></dt>
+    <dd>Add or update comments in source code.</dd>
+    <dt><unicode>🍻</unicode> <shortcode>`:beers:`</shortcode></dt>
+    <dd>Write code drunkenly.</dd>
+    <dt><unicode>💬</unicode> <shortcode>`:speech_balloon:`</shortcode></dt>
+    <dd>Add or update text and literals.</dd>
+    <dt><unicode>🗃️</unicode> <shortcode>`:card_file_box:`</shortcode></dt>
+    <dd>Perform database related changes.</dd>
+    <dt><unicode>🔊</unicode> <shortcode>`:loud_sound:`</shortcode></dt>
+    <dd>Add or update logs.</dd>
+    <dt><unicode>🔇</unicode> <shortcode>`:mute:`</shortcode></dt>
+    <dd>Remove logs.</dd>
+    <dt><unicode>👥</unicode> <shortcode>`:busts_in_silhouette:`</shortcode></dt>
+    <dd>Add or update contributors.</dd>
+    <dt><unicode>🚸</unicode> <shortcode>`:children_crossing:`</shortcode></dt>
+    <dd>Improve user experience / usability.</dd>
+    <dt><unicode>🏗️</unicode> <shortcode>`:building_construction:`</shortcode></dt>
+    <dd>Make architectural changes.</dd>
+    <dt><unicode>📱</unicode> <shortcode>`:iphone:`</shortcode></dt>
+    <dd>Work on responsive design.</dd>
+    <dt><unicode>🤡</unicode> <shortcode>`:clown_face:`</shortcode></dt>
+    <dd>Mock things.</dd>
+    <dt><unicode>🥚</unicode> <shortcode>`:egg:`</shortcode></dt>
+    <dd>Add or update an easter egg.</dd>
+    <dt><unicode>🙈</unicode> <shortcode>`:see_no_evil:`</shortcode></dt>
+    <dd>Add or update a .gitignore file.</dd>
+    <dt><unicode>📸</unicode> <shortcode>`:camera_flash:`</shortcode></dt>
+    <dd>Add or update snapshots.</dd>
+    <dt><unicode>⚗️</unicode> <shortcode>`:alembic:`</shortcode></dt>
+    <dd>Perform experiments.</dd>
+    <dt><unicode>🔍️</unicode> <shortcode>`:mag:`</shortcode></dt>
+    <dd>Improve SEO.</dd>
+    <dt><unicode>🏷️</unicode> <shortcode>`:label:`</shortcode></dt>
+    <dd>Add or update types.</dd>
+    <dt><unicode>🌱</unicode> <shortcode>`:seedling:`</shortcode></dt>
+    <dd>Add or update seed files.</dd>
+    <dt><unicode>🚩</unicode> <shortcode>`:triangular_flag_on_post:`</shortcode></dt>
+    <dd>Add, update, or remove feature flags.</dd>
+    <dt><unicode>🥅</unicode> <shortcode>`:goal_net:`</shortcode></dt>
+    <dd>Catch errors.</dd>
+    <dt><unicode>💫</unicode> <shortcode>`:dizzy:`</shortcode></dt>
+    <dd>Add or update animations and transitions.</dd>
+    <dt><unicode>🗑️</unicode> <shortcode>`:wastebasket:`</shortcode></dt>
+    <dd>Deprecate code that needs cleaning up.</dd>
+    <dt><unicode>🛂</unicode> <shortcode>`:passport_control:`</shortcode></dt>
+    <dd>Work on code relating to authorization, roles, and permissions.</dd>
+    <dt><unicode>🩹</unicode> <shortcode>`:adhesive_bandage:`</shortcode></dt>
+    <dd>straightforward fix for a non-critical issue.</dd>
+    <dt><unicode>🧐</unicode> <shortcode>`:monocle_face:`</shortcode></dt>
+    <dd>Data exploration/inspection.</dd>
+    <dt><unicode>⚰️</unicode> <shortcode>`:coffin:`</shortcode></dt>
+    <dd>Remove dead code.</dd>
+    <dt><unicode>🧪</unicode> <shortcode>`:test_tube:`</shortcode></dt>
+    <dd>Add a failing test.</dd>
+    <dt><unicode>👔</unicode> <shortcode>`:necktie:`</shortcode></dt>
+    <dd>Add or update business logic.</dd>
+    <dt><unicode>🩺</unicode> <shortcode>`:stethoscope:`</shortcode></dt>
+    <dd>Add or update healthcheck.</dd>
+    <dt><unicode>🧱</unicode> <shortcode>`:bricks:`</shortcode></dt>
+    <dd>Infrastructure related changes.</dd>
+    <dt><unicode>🧑‍💻</unicode> <shortcode>`:technologist:`</shortcode></dt>
+    <dd>Improve developer experience.</dd>
+    <dt><unicode>💸</unicode> <shortcode>`:money_with_wings:`</shortcode></dt>
+    <dd>Add sponsorships or money related infrastructure.</dd>
+    <dt><unicode>🧵</unicode> <shortcode>`:thread:`</shortcode></dt>
+    <dd>Add or update code related to multithreading or concurrency.</dd>
+    <dt><unicode>🦺</unicode> <shortcode>`:safety_vest:`</shortcode></dt>
+    <dd>Add or update code related to validation.</dd>
+</dl>
+
+Other unofficial emojis **may** be used as needed:
+
+<dl>
+    <dt><unicode>🤖</unicode> <shortcode>`:robot:`</shortcode></dt>
+    <dd>Add or update a code generator instructions.</dd>
+    <dt><unicode>🧬</unicode> <shortcode>`:dna:`</shortcode></dt>
+    <dd>Add or update mutation tests.</dd>
+    <dt><unicode>🕵️</unicode> <shortcode>`:detective:`</shortcode></dt>
+    <dd>Enhance observability.</dd>
+    <dt><unicode>🦕</unicode> <shortcode>`:sauropod:`</shortcode></dt>
+    <dd>Ensure backward compatibility.</dd>
+    <dt><unicode>🔗</unicode> <shortcode>`:link:`</shortcode></dt>
+    <dd>Changes related to URI/URLs.</dd>
+</dl>
+
+</gitmoji-list>
 
 Refer to the [Gitmoji guide](https://gitmoji.dev/) for a full list of available
 emojis and their purposes.
@@ -519,42 +489,36 @@ emojis and their purposes.
 ### Breaking Changes
 
 <instructions context="breaking-change">
-    <instruction>
-        Breaking changes **must** be indicated in the type/scope prefix
-        of a commit, or as an entry in the footer.
-    </instruction>
-    <instruction>
-        If included as a `<footer />`, a breaking change **must** consist of
-        the uppercase text `BREAKING CHANGE`, followed by a colon `:`,
-        space ` `, and description.
 
-        The footer structure is
-        <output-structure>
+- Breaking changes **must** be indicated in the type/scope prefix of a commit,
+  or as an entry in the footer.
+- If included as a `<footer />`, a breaking change **must** consist of
+  the uppercase text `BREAKING CHANGE`, followed by a colon `:`, space ` `,
+  and description.
+  The footer structure is
 
-        ```mdx
-        <footer><breaking-change optional>BREAKING CHANGE: {breaking-change-description}</breaking-change></footer>
-        ```
+  ```mdx
+  <footer><breaking-change optional>BREAKING CHANGE: {breaking-change-description}</breaking-change></footer>
+  ```
+  <example>
+  <output>
 
-        </output-structure>
-        <example>
-            <output>
-                `BREAKING CHANGE: environment variables now take precedence over
-                config files.`
-            </output>
-        </example>
-    </instruction>
-    <instruction>
-        If included in the `<type />` prefix, breaking changes **must** be
-        indicated by a `!` immediately before the `:`. If `!` is used, `BREAKING
-        CHANGE:` **may** be omitted from the `<footer />` section, and the
-        commit `{description}` **shall** be used to describe the breaking
-        change.
-    </instruction>
-    <instruction>
-        A breaking change **must** be described in the `{body}` of the commit
-        message.
-    </instruction>
-    <instruction>A breaking change description **must** use the `💥` Gitmoji.</instruction>
+  ```text
+  BREAKING CHANGE: environment variables now take precedence over
+  config files.
+  ```
+
+  </output>
+  </example>
+
+- If included in the `<type />` prefix, breaking changes **must** be
+  indicated by a `!` immediately before the `:`. If `!` is used, `BREAKING
+  CHANGE:` **may** be omitted from the `<footer />` section, and the
+  commit `{description}` **shall** be used to describe the breaking
+  change.
+- A breaking change **must** be described in the `{body}` of the commit message.
+- A breaking change description **must** use the `💥` Gitmoji.
+
 </instructions>
 
 ### Example Commit Message
@@ -571,18 +535,27 @@ login requests.
 ```
 
 </output>
-<output>`style: 🔥 remove unnecessary constructor docblock in {class}`</output>
+</example>
+
+<example>
+<output>
+
+```text
+style: 🔥 remove unnecessary constructor docblock in {class}
+```
+
+</output>
 </example>
 
 ## Conventions
 
 <instructions>
-    <instruction>
-        Files in `.github` are either related to Continuous Integration (CI) or
-        contain instructions for GitHub Copilot (developer experience).
-    </instruction>
-    <instruction>Use `style` type and `:fire:` Gitmoji for removing redundant docblocks.</instruction>
-    <instruction>Changes to `composer.json` **must** use the `build` type.</instruction>
+
+- Files in `.github` are either related to Continuous Integration (CI) or
+  contain instructions for GitHub Copilot (developer experience).
+- Use `style` type and `:fire:` Gitmoji for removing redundant docblocks.
+- Changes to `composer.json` **must** use the `build` type.
+
 </instructions>
 
 {/* CSpell:words docblock docblocks */}
