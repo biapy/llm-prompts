@@ -50,8 +50,11 @@ Collection of prompts for GitHub Copilot and other LLMs.
 - [Modern-Day Oracles or Bullshit Machines ?](https://thebullshitmachines.com/).
 - [Open LLM List homepage](https://openllmlist.com/).
 - [You are using Cursor AI incorrectly... @ Geoffrey Huntley](https://ghuntley.com/stdlib/).
+- [Principled Instructions Are All You Need for Questioning LLaMA-1/2, GPT-3.5/4](https://arxiv.org/pdf/2312.16171).
+- [Best Prompt Techniques for Best LLM Responses @ Jules S. Damji](https://medium.com/the-modern-scientist/best-prompt-techniques-for-best-llm-responses-24d2ff4f6bca).
+- [How I Won Singapore’s GPT-4 Prompt Engineering Competition @ towards data science](https://towardsdatascience.com/how-i-won-singapores-gpt-4-prompt-engineering-competition-34c195a93d41/#8f6a).
 
-<!-- CSpell:ignore disler -->
+<!-- CSpell:ignore disler Damji -->
 
 ## 🙇 Author
 
