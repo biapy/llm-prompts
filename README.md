@@ -32,29 +32,40 @@ Collection of prompts for GitHub Copilot and other LLMs.
 
 ## 🙇 Acknowledgements
 
-- [Prompt Engineering Guide](https://www.promptingguide.ai/)
-  ([Prompt Engineering Guide @ GitHub](https://github.com/dair-ai/Prompt-Engineering-Guide)).
 - [Prompt engineering @ Anthropic](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview).
 - [GitHub Copilot in VS Code @ Visual Studio Code Docs](https://code.visualstudio.com/docs/copilot/overview).
 - [Master the core principles of prompt engineering with GitHub Copilot
   @ Visual Studio Code's GitHub](https://www.youtube.com/watch?v=hh1nOX14TyY).
-- [mdx-prompt: Composable LLM Prompts with JSX @ Ed Spencer's Blog](https://edspencer.net/2025/2/3/mdx-prompt-composable-prompts-with-jsx).
-  - [mdx-prompt @ GitHub](https://github.com/edspencer/mdx-prompt)
+- [Designing tools for developers means designing for LLMs too @ encore](https://encore.dev/blog/llm-instructions).
+  - [encore's TypeScript LLM instructions @ encore's GitHub](https://github.com/encoredev/encore/blob/main/ts_llm_instructions.txt).
+  - [encore's Go LLM instructions @ encore's GitHub](https://github.com/encoredev/encore/blob/main/go_llm_instructions.txt).
+- [Principled Instructions Are All You Need for Questioning LLaMA-1/2, GPT-3.5/4](https://arxiv.org/pdf/2312.16171).
+
+### Courses
+
+- [Modern-Day Oracles or Bullshit Machines ?](https://thebullshitmachines.com/).
+- [Prompt Engineering Guide](https://www.promptingguide.ai/)
+  ([Prompt Engineering Guide @ GitHub](https://github.com/dair-ai/Prompt-Engineering-Guide)).
+
+### Resources
+
+- [Open LLM List homepage](https://openllmlist.com/).
+
+### Miscellaneous
+
 - [IndyDevDan @ YouTube](https://www.youtube.com/@indydevdan):
   - [Meta Prompting with o1, o1 Pro Mode, and ChatGPT Pro (Compute on Compute)
     @ IndyDevDan's YouTube](https://www.youtube.com/watch?v=yZGb9-Z9DG0).
     - [Meta Prompting @ disler's GitHub Gist](https://gist.github.com/disler/29ff18823670098c26fa370ad802fa96).
-- [Designing tools for developers means designing for LLMs too @ encore](https://encore.dev/blog/llm-instructions).
-  - [encore's TypeScript LLM instructions @ encore's GitHub](https://github.com/encoredev/encore/blob/main/ts_llm_instructions.txt).
-  - [encore's Go LLM instructions @ encore's GitHub](https://github.com/encoredev/encore/blob/main/go_llm_instructions.txt).
-- [Modern-Day Oracles or Bullshit Machines ?](https://thebullshitmachines.com/).
-- [Open LLM List homepage](https://openllmlist.com/).
-- [You are using Cursor AI incorrectly... @ Geoffrey Huntley](https://ghuntley.com/stdlib/).
-- [Principled Instructions Are All You Need for Questioning LLaMA-1/2, GPT-3.5/4](https://arxiv.org/pdf/2312.16171).
 - [Best Prompt Techniques for Best LLM Responses @ Jules S. Damji](https://medium.com/the-modern-scientist/best-prompt-techniques-for-best-llm-responses-24d2ff4f6bca).
-- [How I Won Singapore’s GPT-4 Prompt Engineering Competition @ towards data science](https://towardsdatascience.com/how-i-won-singapores-gpt-4-prompt-engineering-competition-34c195a93d41/#8f6a).
+- [mdx-prompt: Composable LLM Prompts with JSX @ Ed Spencer's Blog](https://edspencer.net/2025/2/3/mdx-prompt-composable-prompts-with-jsx).
+  - [mdx-prompt @ GitHub](https://github.com/edspencer/mdx-prompt)
+- [You are using Cursor AI incorrectly... @ Geoffrey Huntley](https://ghuntley.com/stdlib/).
+- [How I Won Singapore’s GPT-4 Prompt Engineering Competition
+  @ towards data science](https://towardsdatascience.com/how-i-won-singapores-gpt-4-prompt-engineering-competition-34c195a93d41/#8f6a).
+- [Je ne code plus, Cursor et ChatGPT le font à ma place ! 🤯 @ YoanDev :fr:](https://www.youtube.com/watch?v=k38deocrsDw).
 
-<!-- CSpell:ignore disler Damji -->
+<!-- CSpell:ignore disler Damji YoanDev -->
 
 ## 🙇 Author
 
