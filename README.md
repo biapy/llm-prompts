@@ -64,6 +64,7 @@ Collection of prompts for GitHub Copilot and other LLMs.
 - [How I Won Singapore’s GPT-4 Prompt Engineering Competition
   @ towards data science](https://towardsdatascience.com/how-i-won-singapores-gpt-4-prompt-engineering-competition-34c195a93d41/#8f6a).
 - [Je ne code plus, Cursor et ChatGPT le font à ma place ! 🤯 @ YoanDev :fr:](https://www.youtube.com/watch?v=k38deocrsDw).
+- [My LLM codegen workflow atm @ Harper Reed's Blog](https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/).
 
 <!-- CSpell:ignore disler Damji YoanDev -->
 
