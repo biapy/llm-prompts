@@ -46,6 +46,10 @@ Collection of prompts for GitHub Copilot and other LLMs.
 - [Modern-Day Oracles or Bullshit Machines ?](https://thebullshitmachines.com/).
 - [Prompt Engineering Guide](https://www.promptingguide.ai/)
   ([Prompt Engineering Guide @ GitHub](https://github.com/dair-ai/Prompt-Engineering-Guide)).
+- [Neural Networks: Zero to Hero @ GitHub](https://github.com/karpathy/nn-zero-to-hero).
+- [Deep Dive into LLMs like ChatGPT @ Andrej Karpathy's YouTube](https://www.youtube.com/watch?v=7xTGNNLPyMI)
+
+<!-- CSpell:ignore Andrej Karpathy -->
 
 ### Resources
 
