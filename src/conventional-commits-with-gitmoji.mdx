@@ -335,6 +335,8 @@ This ensures consistency in the commit history and enables automated changelog g
     <dd>Add or update code related to validation.</dd>
 </dl>
 
+{/* CSpell:words healthcheck */}
+
 Other unofficial emojis **may** be used as needed:
 
 <dl>
@@ -589,10 +591,20 @@ style: 🔥 remove unnecessary constructor docblock in {class}
 - `fix: 💡 add exception documentation for user not found in EmailAddressToPassboltUserTransformer`
 - `refactor: 🚚 move PassboltGroupIdentifierToPassboltGroupTransformer to Transformer namespace`
 - `refactor: 🏷️ update Office365User value object to use EmailAddress value object`
+- `refactor: 🎨 use named parameters in Office365UserToNewPassboltUserDataMapper for cleaner code`
 
 </good-results>
 
 {/* CSpell:ignore Passbolt */}
+
+### Bad commit messages
+
+<bad-results>
+
+- `refactor: 🎨 use named parameters in Office365UserToNewPassboltUserDataMapper for better readability`:
+  Subject length exceeds 100 characters.
+
+</bad-results>
 
 ## Conclusion
 
