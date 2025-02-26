@@ -578,40 +578,21 @@ style: 🔥 remove unnecessary constructor docblock in {class}
 
 ## Training data
 
-### Addition of a new line
+### Good commit messages
 
-Input:
+<good-results>
 
-```diff
-diff --git a/src/Common/Client/ExampleTransformer.php b/src/Common/Client/ExampleTransformer.php
-index e013f7e4..ef82ea98 100644
---- a/src/Common/Client/ExampleTransformer.php
-+++ b/src/Common/Client/ExampleTransformer.php
-@@ -44,6 +44,7 @@ class ExampleTransformer implements DataTransformerInterface, Hi
-        if (null === $value) {
-            return '';
-        }
-+
-        if (!$value instanceof ExampleInterface) {
-            throw new \InvalidArgumentException('Expected ExampleInterface object');
-        }
+- `style(common): 🎨 add spacing in ExampleTransformer for better readability`
+- `style: 🔥 remove unnecessary comments in PassboltUserIdentifierToPassboltUserTransformer`
+- `feat: 🏗️ add EmailAddressToPassboltUserTransformer and its test`
+- `fix: 🐛 fix exception message in EmailAddressToPassboltUserTransformer`
+- `fix: 💡 add exception documentation for user not found in EmailAddressToPassboltUserTransformer`
+- `refactor: 🚚 move PassboltGroupIdentifierToPassboltGroupTransformer to Transformer namespace`
+- `refactor: 🏷️ update Office365User value object to use EmailAddress value object`
 
-```
+</good-results>
 
-Bad commit message:
-
-```text
-refactor(ExampleTransformer): ♻️ add null check for value before type validation
-```
-
-The commit type (`refactor`) and Gitmoji are incorrect,
-and the commit message does not describe the changes.
-
-Expected commit message
-
-```text
-style(common): 🎨 add spacing in ExampleTransformer for better readability
-```
+{/* CSpell:ignore Passbolt */}
 
 ## Conclusion
 
