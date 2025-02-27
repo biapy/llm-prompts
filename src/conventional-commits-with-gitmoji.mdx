@@ -41,9 +41,9 @@ Generate commit messages following the
 This ensures consistency in the commit history and enables automated changelog generation.
 
 <instructions>
-    <instruction>The first line of the commit message is the `<subject/>` line.</instruction>
+    <instruction>The first line of the commit message is the `{subject}` line.</instruction>
     <instruction>
-    A longer commit `<body/>` **may** be provided after the `<subject/>`'s short `<description/>`,
+    A longer commit `{body}` **may** be provided after the `{subject}`'s short `{description}`,
     providing additional contextual information about the code changes.
     </instruction>
     <instruction>
@@ -51,118 +51,85 @@ This ensures consistency in the commit history and enables automated changelog g
 
         <output-structure>
 
-        ```mdx
-        <subject><type>{type}<scope optional>({scope})</scope><breaking-change optional>!</breaking-change>: </type><description>{gitmoji} {description}</description></subject>
+        ```md
+        {subject}
 
-        <body optional>{body_markdown_content}</body>
+        {body optional}
 
-        <footer optional><breaking-change optional>BREAKING CHANGE: {breaking-change-description}</breaking-change></footer>
-        <footer optional >{token} #{issue_number}</footer>
-        <footer optional >{token}: {commit_hash}</footer>
-        <footer optional >{token}: {text}</footer>
+        {footer optional}
         ```
 
         </output-structure>
     </instruction>
 </instructions>
 
-### subject
+### subject line
 
-<instructions context="subject">
-    <instruction>
-        The `<subject />` line **must** be less than 100 characters.
-    </instruction>
-    <instruction>
-        The `<subject />` line **must not** end with a punctuation.
-    </instruction>
-    <instruction>
-        The `<subject />` line **must not** contain line breaks.
-    </instruction>
-    <instruction>
-        Use the subject line to describe the commit's intent.
-    </instruction>
-    <instruction>
-        A `<description />` **must** immediately follow the colon and space
-        after the type/scope prefix.
-    </instruction>
-    <instruction>
-        The subject line structure is
-        <output-structure>
+<instructions context="{subject}">
+The `{subject}` has the following requirements:
 
-        ```mdx
-        <subject><type>{type}<scope optional>({scope})</scope><breaking-change optional>!</breaking-change>: </type><description>{gitmoji} {description}</description></subject>
-        ```
+    <rules>
+    - **Structure**: <output-structure>`{type}{description}`</output-structure>
+    - **Length**: Must be less than 100 characters
+    - **Punctuation**: Must not end with punctuation
+    - **Format**: Must not contain line breaks
+    - **Content**: Must describe the commit's intent
+    - **Description**: Must immediately follow the colon and space after the type/scope prefix
+    </rules>
 
-        </output-structure>
-    </instruction>
 </instructions>
 
 #### Commit Types
 
-<instructions context="type">
-    <instruction>
-    Commits **must** be prefixed with a type, which consists of a noun,
-    `feat`, `fix`, …, followed by the OPTIONAL scope, OPTIONAL `!` for breaking changes,
-    and REQUIRED terminal colon and space. The type structure is
-        <output-structure>`<type>{type}<scope optional>({scope})</scope><breaking-change optional>!</breaking-change>: </type>`</output-structure>
-        <example><output>`feat(user-auth)!: `</output></example>
-    </instruction>
-    <instruction>**Always** use the type `feat` when a commit adds a new feature.</instruction>
-    <instruction>**Always** use the type `fix` when a commit represents a bug fix.</instruction>
+<instructions context="{type}">
+    Choose the commit type noun from this list to categorize changes:
 
-    <instruction>
-        Use the following types to categorize the commit messages:
+    - `feat`: A new feature
+    - `fix`: A bug fix
+    - `docs`: Documentation only changes (README file, license, `doc` folder contents)
+    - `style`: Changes that don't affect the meaning of the code (formatting, removal of redundant information)
+    - `refactor`: A code change that neither fixes a bug nor adds a feature
+    - `perf`: A code change that improves performance
+    - `test`: Adding missing tests or correcting existing tests (changes in `tests` folder)
+    - `build`: Changes that affect the build system or external dependencies
+      (`composer.json`, `Dockerfile`, package manager configuration, …)
+    - `ci`: Changes to CI configuration files and scripts
+      (linters, static code analytics, GitHub & GitLab CI pipelines, …)
+    - `chore`: Other changes that don't modify the source code (`.gitignore`, …)
+    - `revert`: Reverts a previous commit
 
-        <dl>
-        <dt>`feat`</dt>
-        <dd>A new feature</dd>
-        <dt>`fix`: </dt>
-        <dd>bug fix</dd>
-        <dt>`docs`</dt>
-        <dd>
-        Documentation only changes (README file, license, `doc` folder contents).
-        </dd>
-        <dt>`style`</dt>
-        <dd>Changes that don't affect the meaning of the code (formatting, removal of redundant information)</dd>
-        <dt>`refactor`</dt>
-        <dd>A code change that neither fixes a bug nor adds a feature</dd>
-        <dt>`perf`</dt>
-        <dd>A code change that improves performance</dd>
-        <dt>`test`</dt>
-        <dd>Adding missing tests or correcting existing tests
-        (changes in `tests` folder).</dd>
-        <dt>`build`</dt>
-        <dd>
-        Changes that affect the build system or external dependencies
-        (`composer.json', `Dockerfile`, package manager configuration, …)
-        </dd>
-        <dt>`ci`: </dt>
-        <dd>
-        Changes to CI configuration files and scripts
-        (linters, static code analytics, GitHub & GitLab CI pipelines, …>
-        </dd>
-        <dt>`chore`</dt>
-        <dd>Other changes that don't modify the source code (gitignore, …)</dd>
-        <dt>`revert`</dt>
-        <dd>Reverts a previous commit</dd>
-        </dl>
+    <rules>
+    - Commits **must** be prefixed with a type, followed by the **optional** scope,
+      **optional** `!` for breaking changes, and **required** terminal colon and space.
+    - Type structure: `{type-noun}({scope optional}){breaking-change-flag optional}: `
+    - **Always** use the type `feat` when a commit adds a new feature.
+    - **Always** use the type `fix` when a commit represents a bug fix.
+    </rules>
 
-    </instruction>
+    <example>`feat(user-auth)!: `</example>
 </instructions>
 
 ##### Commit Scopes
 
-<instructions context="scope">
-
-- A `{scope}` **may** be provided after a type.
+<instructions context="{scope}">
+- A `{scope}` **may** be provided after a type, and is optional.
 - A `{scope}` **must** consist of a noun describing a section of the codebase
-  surrounded by parenthesis `()`.
+    surrounded by parenthesis `()`.
 
-  <example>`fix(parser): `</example>
+    <examples>
+    Example scopes:
+    - `(auth)`
+    - `(parser)`
+    - `(api)`
+    </examples>
 
-- The `{scope}` should be the name of the module or package affected
-  (as perceived by the person reading the changelog generated from commit messages).
-- Changes that affect all modules or packages use an empty scope.
+- The `{scope}` should be the name of the module, package, component, or area affected
+    by the changes (as perceived by the person reading the changelog).
+- For changes affecting multiple modules or the entire codebase, either:
+    - Omit the scope: `feat: ✨ add new feature`
+    - Use a relevant high-level scope: `feat(core): ✨ improve performance`
+- Choose a scope that provides meaningful context about where the change was made.
+- Use consistent scope names across commits to make the changelog more organized.
 
 </instructions>
 
@@ -170,11 +137,21 @@ This ensures consistency in the commit history and enables automated changelog g
 
 <instructions context="description">
 
-- The `<description />` **must** start with a `{gitmoji}`, followed by a space ` `.
-- The `{description}` **must** be clear and concise.
-- Use present tense for the `{description}`.
-- The `{description}` should provide enough context to understand the
-  changes introduced by the commit.
+- The `{description}` **must** begin with a `{gitmoji}`, followed by a space, and then a concise `{description-text}`.
+- Format: `{gitmoji} {description-text}`
+- The `{description-text}` **must**:
+    - Use imperative, present tense (e.g., "add", "update", "fix", not "added", "updated", "fixed")
+    - Be clear, specific, and descriptive without being verbose
+    - Start with a lowercase letter
+    - Not end with a period or other punctuation
+    - Provide enough context to understand the change without reading the diff
+    <examples>
+    Example descriptions:
+    - `✨ add user authentication system`
+    - `🐛 fix memory leak in data processing loop`
+    - `♻️ refactor user validation logic`
+    - `📝 update API documentation`
+    </examples>
 
 </instructions>
 
@@ -407,52 +384,33 @@ emojis and their purposes.
 
 ### Body
 
-<instructions context="body">
-    <instruction>
-        Use the `{body_markdown_content}` to provide additional context and details about the
-        changes.
-    </instruction>
-    <instruction>
-        Use the `{body_markdown_content}` to explain what and why compared to how.
-    </instruction>
-    <instruction>
-        The `{body_markdown_content}` **must** begin one blank line after the
-        `<subject/>`.
-    </instruction>
-    <instruction>
-        The `{body_markdown_content}` **must** be wrapped at 72 characters.
-    </instruction>
-    <instruction>
-        The `{body_markdown_content}` is free-form and **may** consist of any number of newline
-        separated paragraphs.
-    </instruction>
-    <instruction>
-        The `{body_markdown_content}` use the MarkDown format.
-    </instruction>
+<instructions context="{body}">
+The `{body}` has the following requirements:
+
+- Must begin one blank line after the `{subject}`.
+- Must be wrapped at 72 characters.
+- Use the body to provide additional context and details about the changes.
+- Explain what and why compared to how.
+- Is free-form and may consist of any number of newline separated paragraphs.
+- Uses the Markdown format.
 </instructions>
 
 ### Footer
 
-<instructions context="footer">
-    <instruction>One or more `<footer/>` **may** be provided one blank line after the `<body/>`.</instruction>
-    <instruction>
-    Each `<footer/>` **must** consist of a word `{token}`, followed by either a
-    `:<space>` or `<space>#` separator, followed by a string value
-    (see the [git trailer convention](https://git-scm.com/docs/git-interpret-trailers)).
-    The footer structures are:
-    - <output-structure>`<footer>{token} #{issue_number} {text}</footer>`</output-structure>
-    - <output-structure>`<footer>{token}: {text}</footer>`</output-structure>
-    </instruction>
-    <instruction>
-    A `<footer/>`'s token **must** use `-` in place of whitespace characters,
-    <example><output>Acked-by</output></example>
-    (this helps differentiate the footer section from a multi-paragraph body).
-    An exception is made for `BREAKING CHANGE`, which **may** also be used as a token.
-    </instruction>
-    <instruction>A footer's value **may** contain spaces and newlines.</instruction>
-    <instruction>
-    Common footers include:
+<instructions context="{footer}">
+The `{footer}` has the following requirements:
 
+- One or more footers **may** be provided one blank line after the `{body}`.
+- Each footer **must** consist of a word `{token}`, followed by either a `:<space>` or `<space>#` separator,
+    followed by a string value (see the [git trailer convention](https://git-scm.com/docs/git-interpret-trailers)).
+- The footer structures are:
+    - <output-structure>`{token} #{issue_number} {text}`</output-structure>
+    - <output-structure>`{token}: {text}`</output-structure>
+- A footer's token **must** use `-` in place of whitespace characters,
+    <example>for example: `Acked-by`</example> (this helps differentiate the footer section from a multi-paragraph body).
+- An exception is made for `BREAKING CHANGE`, which **may** also be used as a token.
+- A footer's value **may** contain spaces and newlines.
+- Common footers include:
     - Issue references:
         - `Closes #{issue_number}`
         - `Fix #{issue_number}`
@@ -465,12 +423,11 @@ emojis and their purposes.
         - `Reference-to: {commit_hash} ({commit_subject}, {commit_date})`
         - `See-also: {commit_hash} ({commit_subject})`
     - Breaking changes: `BREAKING CHANGE: {breaking_change_description}`
-
-    </instruction>
 </instructions>
 
 <example>
-    <output>
+
+This is an example of a footer:
 
     ```text
     BREAKING CHANGE: environment variables now take precedence over config files.
@@ -484,42 +441,34 @@ emojis and their purposes.
     See-also: fe3187489d69c4 (subject of related commit)
     ```
 
-    </output>
 </example>
+
 {/* CSpell:ignore Junio Hamano Acked */}
 
 ### Breaking Changes
+### Breaking Changes
 
 <instructions context="breaking-change">
+Breaking changes **must** be indicated in one of two ways:
 
-- Breaking changes **must** be indicated in the type/scope prefix of a commit,
-  or as an entry in the footer.
-- If included as a `<footer />`, a breaking change **must** consist of
-  the uppercase text `BREAKING CHANGE`, followed by a colon `:`, space ` `,
-  and description.
-  The footer structure is
+1. In the commit type prefix with a `!` character:
+    - Add `!` immediately before the colon: `feat(auth)!: 💥 change authentication flow`
+    - When using `!`, the commit description **must** use the `💥` Gitmoji
+    - The commit body **must** contain details about the breaking change
+2. As a footer entry:
+    - Add `BREAKING CHANGE: {breaking-change-description}` to the footer section
+    - The footer must start with the exact text `BREAKING CHANGE:` followed by a space
+    - Example:
 
-  ```mdx
-  <footer><breaking-change optional>BREAKING CHANGE: {breaking-change-description}</breaking-change></footer>
-  ```
-  <example>
-  <output>
+      ```md
+      BREAKING CHANGE: environment variables now take precedence over config files
+      ```
 
-  ```text
-  BREAKING CHANGE: environment variables now take precedence over
-  config files.
-  ```
+**Important rules:**
 
-  </output>
-  </example>
-
-- If included in the `<type />` prefix, breaking changes **must** be
-  indicated by a `!` immediately before the `:`. If `!` is used, `BREAKING
-  CHANGE:` **may** be omitted from the `<footer />` section, and the
-  commit `{description}` **shall** be used to describe the breaking
-  change.
-- A breaking change **must** be described in the `{body}` of the commit message.
-- A breaking change description **must** use the `💥` Gitmoji.
+- A breaking change **must** be described in detail in the `{body}` of the commit message
+- If the `!` notation is used in the type, the `BREAKING CHANGE:` footer **may** be omitted
+- The commit message description for breaking changes **must** use the `💥` Gitmoji
 
 </instructions>
 
@@ -615,6 +564,9 @@ style: 🔥 remove unnecessary constructor docblock in {class}
 - `test: 🏗️ assert return value of transform method in Office365UserToExistingPassboltUserTransformerTest`:
   the `:building_construction:` Gitmoji is not appropriate for adding tests,
   `:white_check_mark:` or `:test_tube:` are better choices.
+- `refactor: ♻️ update transform method return type to PassboltUser in Office365UserToNewPassboltUserTransformer`:
+   The subject line exceeds 100 characters, and the `♻️` emoji is not
+   appropriate for updating types, `🏷️` is a better choice.
 
 </bad-results>
 
