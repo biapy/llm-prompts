@@ -70,8 +70,10 @@ Collection of prompts for GitHub Copilot and other LLMs.
 - [Je ne code plus, Cursor et ChatGPT le font à ma place ! 🤯 @ YoanDev :fr:](https://www.youtube.com/watch?v=k38deocrsDw).
 - [My LLM codegen workflow atm @ Harper Reed's Blog](https://harper.blog/2025/02/16/my-llm-codegen-workflow-atm/).
 - [How I program with LLMs @ Blog: David Crawshaw](https://crawshaw.io/blog/programming-with-llms).
+- [Claude Code Top Tips: Lessons from the First 20 Hours
+  @ Waleed Kadous' Medium](https://waleedk.medium.com/claude-code-top-tips-lessons-from-the-first-20-hours-246032b943b4).
 
-<!-- CSpell:ignore disler Damji YoanDev codegen Crawshaw -->
+<!-- CSpell:ignore disler Damji YoanDev codegen Crawshaw Waleed Kadous -->
 
 ## 🙇 Author
 
